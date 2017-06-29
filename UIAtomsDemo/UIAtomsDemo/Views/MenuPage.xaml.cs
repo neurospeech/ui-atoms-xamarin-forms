@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UIAtomsDemo.Forms.Views;
 using UIAtomsDemo.Views;
 using Xamarin.Forms;
@@ -30,6 +31,7 @@ namespace UIAtomsDemo
 
             this.menuList.TapCommand = new AtomCommand<MenuItem>( (item) => {
                 RootPage.Navigate(item.Type);
+                return Task.CompletedTask;
             });
         }
 
