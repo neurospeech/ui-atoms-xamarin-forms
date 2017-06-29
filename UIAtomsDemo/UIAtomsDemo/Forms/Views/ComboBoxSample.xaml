@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ns="clr-namespace:NeuroSpeech.UIAtoms.Controls;assembly=NeuroSpeech.UIAtoms"
+             x:Class="UIAtomsDemo.Forms.Views.ComboBoxSample">
+  <ns:AtomForm>
+    <ns:AtomFieldGroup Category="Details">
+    <ns:AtomChooser
+      
+      ns:AtomForm.Label="Country"
+      ItemsSource="{Binding Items}"
+      LabelPath="Label"
+      ValuePath="Value"
+        FilterPath="Label"
+        AllowMultipleSelection="False"
+      Value="{Binding CountryCode, Mode=TwoWay}"
+      />
+
+      <ns:AtomChooser
+        x:Name="countryList"
+        ns:AtomForm.Label="Country"
+        ItemsSource="{Binding Items}"
+        AllowMultipleSelection="True"
+        LabelPath="Label"
+        ValuePath="Value"
+        
+      />
+
+      <ns:AtomRepeator
+        ItemsSource="{Binding SelectedItems, Source={x:Reference countryList}}">
+        <ns:AtomRepeator.ItemTemplate>
+          <DataTemplate>
+            <Label Text="{Binding Label}" />
+          </DataTemplate>
+        </ns:AtomRepeator.ItemTemplate>
+      </ns:AtomRepeator>  
+
+    </ns:AtomFieldGroup>
+  </ns:AtomForm>
+</ContentPage>

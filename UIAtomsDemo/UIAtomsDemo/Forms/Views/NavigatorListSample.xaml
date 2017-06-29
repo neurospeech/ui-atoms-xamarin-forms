@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ns="clr-namespace:NeuroSpeech.UIAtoms.Controls;assembly=NeuroSpeech.UIAtoms"
+             x:Class="UIAtomsDemo.Forms.Views.NavigatorListSample">
+  <ContentPage.ToolbarItems>
+    <ns:AtomToolbarItem 
+      Text="Delete"
+      Command="{Binding DeleteCommand}"
+      CommandParameter="{Binding SelectedItems, Source={x:Reference listView}}"
+      IsVisible="{Binding HasSelection, Source={x:Reference listView}}"/>
+  </ContentPage.ToolbarItems>
+  
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <ns:AtomNavigatorListView
+      x:Name="listView"
+      RowHeight="80"
+      SelectedItemBackground="#EEE"
+      TapCommand="{Binding TapCommand}"
+      ItemsSource="{Binding Items}">
+      <ns:AtomNavigatorListView.ItemTemplate>
+        <DataTemplate>
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition/>
+            <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding Label}" />
+            <Button Text="Test"/>
+          </Grid>
+            
+        </DataTemplate>
+      </ns:AtomNavigatorListView.ItemTemplate>
+    </ns:AtomNavigatorListView>
+
+    <Button 
+      Grid.Row="1"
+      Text="Delete Selected" 
+      Command="{Binding DeleteCommand}"
+      CommandParameter="{Binding SelectedItems, Source={x:Reference listView}}"></Button>
+    
+  </Grid>
+</ContentPage>

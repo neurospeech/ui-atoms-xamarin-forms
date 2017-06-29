@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="NeuroSpeech.UIAtoms.Pages.CheckBoxListPage" 
+  xmlns:ns="clr-namespace:NeuroSpeech.UIAtoms.Controls;assembly=NeuroSpeech.UIAtoms"
+  x:Name="thePage"
+  Title="Choose">
+	<Grid RowSpacing="5" ColumnSpacing="5">
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+  
+    <SearchBar 
+      Text="{Binding SearchText}"
+      MinimumWidthRequest="320"/>
+  
+    <ns:AtomNavigatorListView
+      SelectedItems="{Binding SelectedItems}"
+      ItemsSource="{Binding Items}"
+      IsGroupingEnabled="{Binding IsGroupingEnabled}"
+      GroupDisplayBinding="{Binding GroupDisplayBinding}"
+      GroupHeaderTemplate="{Binding GroupHeaderTemplate}"
+      GroupShortNameBinding="{Binding GroupShortNameBinding}"
+      ItemTemplate="{Binding ItemTemplate}">
+    </ns:AtomNavigatorListView>
+    
+
+  </Grid>
+</ContentPage>

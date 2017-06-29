@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NeuroSpeech.UIAtoms.Pages.AtomChooserPage">
+  <Grid x:Name="theGrid" ColumnSpacing="5" RowSpacing="5" Margin="5">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+
+    <SearchBar
+      x:Name="searchBar"
+      Grid.ColumnSpan="2"
+      MinimumWidthRequest="300"      
+      />
+
+    <Button
+      x:Name="addButton"
+      Grid.Row="1"
+      Text="Add New"
+      />
+
+    <Button 
+      x:Name="cancelButton"
+      Grid.Row="3"
+      BackgroundColor="Red"
+      TextColor="White"
+      Text="Cancel"/>
+
+    <Button 
+      x:Name="okButton"
+      Grid.Row="3"
+      Grid.Column="1"
+      BackgroundColor="Green"
+      TextColor="White"
+      Text="Done"/>
+    
+  </Grid>
+</ContentPage>

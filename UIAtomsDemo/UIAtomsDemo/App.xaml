@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ns="clr-namespace:NeuroSpeech.UIAtoms.Controls;assembly=NeuroSpeech.UIAtoms"
+             
+             x:Class="UIAtomsDemo.App">
+  <Application.Resources>
+
+    <ResourceDictionary >
+
+      
+
+
+      <Style TargetType="ns:AtomFieldGrid">
+
+        <Setter Property="LabelColor" Value="Green"></Setter>
+        <Setter Property="ErrorColor" Value="Green"></Setter>
+
+      </Style>
+
+    </ResourceDictionary>
+
+  </Application.Resources>
+</Application>

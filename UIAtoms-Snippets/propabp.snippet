@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Define an attached BindableProperty</Title>
+            <Shortcut>propab</Shortcut>
+            <Description>Code snippet for a property using BindableProperty as the backing store</Description>
+            <Author>NeuroSpeech Technologies Pvt Ltd</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>Property Type</ToolTip>
+                    <Default>int</Default>
+                </Literal>
+                <Literal>
+                    <ID>property</ID>
+                    <ToolTip>Property Name</ToolTip>
+                    <Default>MyProperty</Default>
+                </Literal>
+                <Literal>
+                    <ID>ownerclass</ID>
+                    <ToolTip>The owning class of this Property.  Typically the class that it is declared in.</ToolTip>
+                    <Default>ownerclass</Default>
+                </Literal>
+                <Literal>
+                    <ID>defaultvalue</ID>
+                    <ToolTip>The default value for this property.</ToolTip>
+                    <Default>null</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[
+
+        #region $property$ Attached Property
+        /// <summary>
+        /// $property$ Attached property
+        /// </summary>
+        public static readonly BindableProperty $property$Property =
+            BindableProperty.CreateAttached("$property$", typeof($type$),
+            typeof($ownerclass$),
+            $defaultvalue$,
+            BindingMode.OneWay,
+            null,
+            null);//On$property$Changed);
+
+        /*private static void On$property$Changed(BindableObject bindable, object oldValue, object newValue)
+        {
+            
+        }*/
+
+        /// <summary>
+        /// Set $property$ for bindable object
+        /// </summary>
+        /// <param name="bindable"></param>
+        /// <param name="newValue"></param>
+        public static void Set$property$(BindableObject bindable, $type$ newValue)
+        {
+            bindable.SetValue($property$Property, newValue);
+        }
+
+        /// <summary>
+        /// Get $property$ for bindable object
+        /// </summary>
+        /// <param name="bindable"></param>
+        /// <returns></returns>
+        public static $type$ Get$property$(BindableObject bindable) {
+            return ($type$)bindable.GetValue($property$Property);
+        }
+        #endregion
+
+$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

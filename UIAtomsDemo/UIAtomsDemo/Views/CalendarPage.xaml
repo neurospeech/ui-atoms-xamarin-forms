@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UIAtomsDemo.Views.CalendarPage"
+             xmlns:ns="clr-namespace:NeuroSpeech.UIAtoms.Controls;assembly=NeuroSpeech.UIAtoms">
+
+    <ns:AtomCoachMarks.CoachMark>
+        <DataTemplate>
+            <ns:AtomCoachMarkPage>
+                <ns:AtomCoachMarkImage
+                    Source="Icon.png"
+                    Text="Welcome to coachmark, you can tap once to skip to next help and double tap to close all helps for this screen"
+                    />
+                <ns:AtomCoachMarkImage
+                    Source="Icon.png"
+                    Text="this is last help in the coachmark help section"
+                    />
+            </ns:AtomCoachMarkPage>
+        </DataTemplate>
+    </ns:AtomCoachMarks.CoachMark>
+    
+  <ns:AtomForm ShowSearch="False">
+    <ns:AtomFieldGroup Category="Header">
+      <ns:AtomDatePicker ns:AtomForm.Label="Date:"/>
+    </ns:AtomFieldGroup>
+  </ns:AtomForm>
+</ContentPage>

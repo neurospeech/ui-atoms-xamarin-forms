@@ -1,0 +1,56 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#     DirectoryInfo hostDirectory = new DirectoryInfo( Path.GetDirectoryName(Host.TemplateFile) + "\\Resources"); #>
+using System;
+
+namespace NeuroSpeech.UIAtoms.Controls{
+
+	public static partial class AtomStockImages{
+
+	<# foreach(var file in hostDirectory.EnumerateFiles().Where(x=>x.Extension.StartsWith(".png", StringComparison.CurrentCultureIgnoreCase))){ 
+	
+		string name = file.Name;
+		int index = name.LastIndexOf('.');
+		name = name.Substring(0,index);
+		var bytes = System.IO.File.ReadAllBytes(file.FullName);
+		//string data = "data:image/png;base64," + Convert.ToBase64String(bytes, Base64FormattingOptions.InsertLineBreaks).Replace("\r\n","\"\r\n//\t\t+\"");
+		string data = "";
+		int n = 0;
+		for(int i=0;i<bytes.Length;i++){
+			data += bytes[i].ToString() + ",";
+			n++;
+			if(n % 64 == 0){
+				data += "\r\n\t//";
+			}
+			
+		}
+	
+	#>
+
+	public const string <#= name #>Url = "res://NeuroSpeech.UIAtoms/Images.<#= file.Name #>";
+
+	//private static byte[] _<#= name #>; 
+	//public static byte[] <#= name #> => _<#= name #> ?? ( _<#= name #> =  new byte[] {<#=data #>});
+
+	<# } #>
+
+
+
+
+		internal static byte[] DecodeDataUri(string s)
+		{
+			int i = s.IndexOf(',');
+			s = s.Substring(i + 1);
+			var data = Convert.FromBase64String(s);
+			return data;
+		}
+
+	}
+
+
+}

@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>5be707ed-298d-4115-a386-716694673423</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>NeuroSpeech.UIAtoms</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AtomCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AtomDisposableAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AtomEnumerableHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AtomList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AtomUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CoachMarks\AtomCoachMarks.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\AtomAsyncDispatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\IAtomViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomAccordionView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomBooleanImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomBubbleLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomCalendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomCheckBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomChooser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomComboBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomDatePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomField.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomFieldGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomFieldItemTemplate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomFieldTemplate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomForm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomFormSetup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomFrame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomGridView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomImageCropper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomItemsControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomMaskBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomNavigatorListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomPasswordBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomPasswordBoxAgain.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomPicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomPopup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomPopupPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomProgressPopupPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomPropertyChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomRepeator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomRoundBorderEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomStockImages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomSubmitButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomTextBoxWithRegEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomToggleButtonBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomToolbarItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomTreeView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomVideoPlayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomVirtualList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomWebView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomZoomView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\ScrollableListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\InverseStringToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AtomObjectLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\StringToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DateHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\AtomNavigator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\AtomPreferences.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\ICacheProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\NavigationItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\NavigationQueue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\ObjectPool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\PageResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\INotificationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\IWebCookieStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DI\UIAtomsApplication.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Drawing\BaseAtomImageProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Form\AtomDataForm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Form\FormFieldAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Form\PropertyBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Form\PropertyListConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Form\PropertyListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Form\StringHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Form\UIViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Images\StockImages.cs">
+      <DependentUpon>StockImages.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\AtomChooserPage.xaml.cs">
+      <DependentUpon>AtomChooserPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\CheckBoxListPage.xaml.cs">
+      <DependentUpon>CheckBoxListPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\CheckBoxListPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ChooserView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ItemSelectorPage.xaml.cs">
+      <DependentUpon>ItemSelectorPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ItemSelectorPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\TextToSpeechService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validation\AtomPasswordAgainValidationRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validation\AtomPasswordValidationRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validation\AtomPropertyValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validation\AtomRegExValidationRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validation\AtomSelectionValidationRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validation\AtomStringValidationRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validation\AtomValidationError.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validation\AtomValidationRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VersionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Web\AppWebClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Web\Attributes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Web\FormData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Web\IWebClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Web\JsonRestClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Web\JsonRestClientLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Web\ShortMemoryCache.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\ItemSelectorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\CheckBoxListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\AtomChooserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\CheckBoxImage.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\DeleteImage.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\DropDownImage.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\EmptyCheckBoxImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Images\StockImages.tt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\ChooserView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

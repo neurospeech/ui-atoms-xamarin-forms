@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+  xmlns="http://xamarin.com/schemas/2014/forms" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+  xmlns:ns="clr-namespace:NeuroSpeech.UIAtoms.Controls;assembly=NeuroSpeech.UIAtoms"
+  x:Class="UIAtomsDemo.FormDemoPage"
+  Title="Form Demo">
+
+  <Grid BackgroundColor="Green">
+
+    <ns:AtomForm x:Name="theForm">
+      <ns:AtomFieldGroup >
+      
+        <Switch ns:AtomForm.Label="Employee Login" IsToggled="{Binding IsStaffLogin,Mode=TwoWay}"/>
+
+        <ns:AtomTextBox
+          ns:AtomForm.Label="Company ID:"
+          IsVisible="{Binding IsStaffLogin}"
+          DisableSuggestions="True">
+          <ns:AtomTextBox.Effects>
+            <ns:AtomRoundBorderEffect/>
+          </ns:AtomTextBox.Effects>
+        </ns:AtomTextBox>
+
+        <ns:AtomTextBox
+            x:Name="u"
+            ns:AtomForm.Label="{Binding UsernameLabel}"
+            ns:AtomForm.IsRequired="true"
+            Text="{Binding Username}">
+          <ns:AtomTextBox.Effects>
+            <ns:AtomRoundBorderEffect/>
+          </ns:AtomTextBox.Effects>
+
+        </ns:AtomTextBox>
+
+        <ns:AtomPasswordBox
+           ns:AtomForm.Label="Password"
+           ns:AtomForm.IsRequired="true"
+           Text="{Binding Password}">
+          <ns:AtomTextBox.Effects>
+            <ns:AtomRoundBorderEffect/>
+          </ns:AtomTextBox.Effects>
+
+        </ns:AtomPasswordBox>
+
+        <ns:AtomSubmitButton 
+          Text="Login"/>
+      
+      </ns:AtomFieldGroup>
+    </ns:AtomForm>
+  </Grid>
+
+</ContentPage>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NeuroSpeech.UIAtoms.Pages.ItemSelectorPage"
+             Title="Choose Item"
+             >
+  <Grid Padding="5" RowSpacing="5" ColumnSpacing="5">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+
+    <SearchBar x:Name="searchBar" Grid.ColumnSpan="2"/>
+
+    <ListView x:Name="listView"
+              Grid.Row="1"  Grid.ColumnSpan="2"
+              ItemTemplate="{Binding ItemTemplate}"
+              SelectedItem="{Binding SelectedItem,Mode=TwoWay}"
+              ItemsSource="{Binding FilteredItems}" 
+              IsGroupingEnabled="{Binding IsGroupingEnabled}"
+              GroupDisplayBinding="{Binding GroupDisplayBinding}"
+              GroupHeaderTemplate="{Binding GroupHeaderTemplate}"
+              GroupShortNameBinding="{Binding GroupShortNameBinding}"
+              />
+
+
+    <Button Text="Cancel" Grid.Row="2" BackgroundColor="Red" TextColor="White" x:Name="cancelButton"/>
+
+    <Button Text="Select" Grid.Row="2" Grid.Column="1" BackgroundColor="Green" TextColor="White" x:Name="selectButton"/>
+    
+  </Grid>
+</ContentPage>
