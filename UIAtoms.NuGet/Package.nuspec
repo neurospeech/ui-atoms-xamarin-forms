@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>UIAtoms.Xamarin.Forms</id>
-    <version>1.2.297</version>
+    <version>{version}</version>
     <title>NeuroSpeech UIAtoms for Xamarin.Forms</title>
     <authors>akash.kava</authors>
     <owners></owners>

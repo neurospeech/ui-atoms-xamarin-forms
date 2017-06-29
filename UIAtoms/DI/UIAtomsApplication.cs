@@ -273,7 +273,7 @@ namespace NeuroSpeech.UIAtoms
         /// <param name="licenseKey"></param>
         public UIAtomsConfig(string licenseKey = null)
         {
-            this.LicenseKey = licenseKey;
+            //this.LicenseKey = licenseKey;
         }
 
         /// <summary>
