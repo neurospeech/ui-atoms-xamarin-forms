@@ -1392,7 +1392,7 @@ namespace NeuroSpeech.UIAtoms.Controls
             if (selectedItems.IsChanging)
                 return;
             using (selectedItems.BeginEdit()) { 
-                isSelectionChanging = true;
+                //isSelectionChanging = true;
                 SelectedItems.Clear();
                 if (newValue != null)
                 {
@@ -2311,7 +2311,7 @@ namespace NeuroSpeech.UIAtoms.Controls
         internal bool IsSelected(object item) =>
             selectedItems.Contains(item);
 
-        private bool isSelectionChanging = false;
+        //private bool isSelectionChanging = false;
 
         internal void SetIsSelected(object item, bool newValue)
         {

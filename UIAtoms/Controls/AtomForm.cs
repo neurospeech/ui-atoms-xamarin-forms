@@ -558,7 +558,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
 
         private readonly AtomFormItemsControl listView;
-        private SearchBar searchBar;
+        //private SearchBar searchBar;
 
         internal void UpdateItems() {
             UIAtomsApplication.Instance.TriggerOnce(() =>

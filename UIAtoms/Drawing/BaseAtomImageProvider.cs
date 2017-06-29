@@ -95,7 +95,7 @@ namespace NeuroSpeech.UIAtoms.Drawing
 
                 var key = "Res-Images:" + uri.ToString();
 
-                byte[] d = null;
+                //byte[] d = null;
                 //d = Cache.Get(key) as byte[];
                 //if (d != null)
                 //    return d;
@@ -127,7 +127,7 @@ namespace NeuroSpeech.UIAtoms.Drawing
 
 
                 string key = uri.ToString();
-                byte[] d = null;
+                //byte[] d = null;
                 //d = Cache.Get(key) as byte[];
                 //if (d != null)
                 //    return d;
@@ -222,7 +222,7 @@ namespace NeuroSpeech.UIAtoms.Drawing
             Assembly a = FindAssembly(assemblyName);//var a = Assembly.Load(new AssemblyName(assemblyName));
             var type = a.DefinedTypes.First(x => x.FullName == path);
 
-            object v = null;
+            //object v = null;
 
 
             FieldInfo f = type.GetField(field);

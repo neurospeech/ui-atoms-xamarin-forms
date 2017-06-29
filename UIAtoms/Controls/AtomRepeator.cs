@@ -757,6 +757,7 @@ namespace NeuroSpeech.UIAtoms.Controls
                 layoutCache.Clear();
             }
 
+            [Obsolete]
             protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
             {
 

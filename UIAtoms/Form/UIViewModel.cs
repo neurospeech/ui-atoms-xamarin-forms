@@ -529,7 +529,7 @@ namespace NeuroSpeech.UIAtoms
         }
 
 
-        private CancellationTokenSource cancellationToken = null;
+        //private CancellationTokenSource cancellationToken = null;
 
         /// <summary>
         /// 

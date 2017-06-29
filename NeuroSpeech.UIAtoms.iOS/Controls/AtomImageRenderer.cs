@@ -279,7 +279,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         UIActivityIndicatorView _Progress;
 
-        private static NSData _emptyBlock = null;
+        //private static NSData _emptyBlock = null;
 
         public AtomImageView()
         {

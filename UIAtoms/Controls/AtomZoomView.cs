@@ -194,7 +194,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
             this.BackgroundColor = Color.White;
 
-            if (Device.OS != TargetPlatform.Android)
+            if (Device.RuntimePlatform != Device.Android)
             {
                 var pinchGesture = new PinchGestureRecognizer();
                 pinchGesture.PinchUpdated += OnPinchUpdated;

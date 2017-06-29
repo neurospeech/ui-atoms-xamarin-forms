@@ -249,13 +249,13 @@ namespace NeuroSpeech.UIAtoms.Controls
 
     internal class ListItem {
 
-        internal int Index;
+        //internal int Index;
 
-        internal object Data;
+        //internal object Data;
 
 
         // work in progress...
-        internal object Header;
+        //internal object Header;
 
         
 
