@@ -21,21 +21,16 @@ namespace UIAtomsDemo.Forms.Services
 				UserAgent = "Audition-800 iOS";
 			}*/
 
-            switch (Device.OS)
+            switch (Device.RuntimePlatform)
             {
-                case TargetPlatform.Other:
-                    break;
-                case TargetPlatform.iOS:
+                case Device.iOS:
                     UserAgent = "Audition-800 iOS";
                     break;
-                case TargetPlatform.Android:
+                case Device.Android:
                     UserAgent = "Audition-800 Android";
                     break;
-                case TargetPlatform.WinPhone:
-                    break;
-                case TargetPlatform.Windows:
-                    break;
                 default:
+                    UserAgent = "Mobile-App-Unknown";
                     break;
             }
 
