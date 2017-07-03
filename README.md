@@ -2,3 +2,7 @@
 
 # UI Atoms for Xamarin.Forms
 Set of Line of business controls for Xamarin.Forms
+
+# License
+----------------------------
+GPL 3.0
