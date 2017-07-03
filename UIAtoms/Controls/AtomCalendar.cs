@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -461,6 +462,88 @@ namespace NeuroSpeech.UIAtoms.Controls
 
 
 
+        #region Property DateTypes
+
+        /// <summary>
+        /// Bindable Property DateTypes
+        /// </summary>
+        public static readonly BindableProperty DateTypesProperty = BindableProperty.Create(
+          nameof(DateTypes),
+          typeof(IEnumerable<KeyValuePair<DateTime,string>>),
+          typeof(AtomCalendar),
+          null,
+          BindingMode.OneWay,
+          // validate value delegate
+          // (sender,value) => true
+          null,
+          // property changed, delegate
+          //(sender,oldValue,newValue) => ((AtomCalendar)sender).OnDateTypesChanged(oldValue,newValue),
+          null,
+          // property changing delegate
+          // (sender,oldValue,newValue) => {}
+          null,
+          // coerce value delegate 
+          // (sender,value) => value
+          null,
+          // create default value delegate
+          // () => Default(T)
+          null
+        );
+
+        
+        /// <summary>
+        /// On DateTypes changed
+        /// </summary>
+        /// <param name="oldValue">Old Value</param>
+        /// <param name="newValue">New Value</param>
+        protected virtual void OnDateTypesChanged(object oldValue, object newValue)
+        {
+            INotifyCollectionChanged inc = oldValue as INotifyCollectionChanged;
+            if(inc!=null)
+            {
+                inc.CollectionChanged -= Inc_CollectionChanged;
+            }
+            inc = newValue as INotifyCollectionChanged;
+            if(inc!=null)
+            {
+                inc.CollectionChanged += Inc_CollectionChanged;
+                Inc_CollectionChanged(newValue, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            }
+        }
+
+        private void Inc_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            var items = DateTypes;
+            List<AtomDateModel> list = listView.ItemsSource as List<AtomDateModel>;
+            if (list == null)
+                return;
+            foreach(var item in list)
+            {
+                item.Type= items.Where(x => x.Key == item.Value).Select(x => x.Value).FirstOrDefault();
+            }
+        }
+
+
+        /// <summary>
+        /// Property DateTypes
+        /// </summary>
+        public IEnumerable<KeyValuePair<DateTime,string>> DateTypes
+        {
+            get
+            {
+                return (IEnumerable<KeyValuePair<DateTime,string>>)GetValue(DateTypesProperty);
+            }
+            set
+            {
+                SetValue(DateTypesProperty, value);
+            }
+        }
+        #endregion
+
+
+
+
+
         private readonly AtomGridView listView;
         private Picker monthPicker;
         private Picker yearPicker;
@@ -631,6 +714,8 @@ namespace NeuroSpeech.UIAtoms.Controls
                 start = start.AddDays(1);
             }
 
+            Inc_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+
             listView.ItemTemplate = ItemTemplate;
             listView.ItemHeight = 50;
             listView.ItemsSource = list;
@@ -771,6 +856,25 @@ namespace NeuroSpeech.UIAtoms.Controls
             set
             {
                 SetProperty(ref _Label, value);
+            }
+        }
+        #endregion
+
+        #region Property Type   
+
+        private string _Type = "";
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Type
+        {
+            get
+            {
+                return _Type;
+            }
+            set
+            {
+                SetProperty(ref _Type, value);
             }
         }
         #endregion
