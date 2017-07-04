@@ -714,11 +714,13 @@ namespace NeuroSpeech.UIAtoms.Controls
                 start = start.AddDays(1);
             }
 
-            Inc_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-
+            
             listView.ItemTemplate = ItemTemplate;
             listView.ItemHeight = 50;
             listView.ItemsSource = list;
+
+            Inc_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+
 
             listView.HeightRequest = 5 * 52;
 
