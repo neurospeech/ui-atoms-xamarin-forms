@@ -477,8 +477,8 @@ namespace NeuroSpeech.UIAtoms.Controls
           // (sender,value) => true
           null,
           // property changed, delegate
-          //(sender,oldValue,newValue) => ((AtomCalendar)sender).OnDateTypesChanged(oldValue,newValue),
-          null,
+          (sender,oldValue,newValue) => ((AtomCalendar)sender).OnDateTypesChanged(oldValue,newValue),
+          //null,
           // property changing delegate
           // (sender,oldValue,newValue) => {}
           null,
