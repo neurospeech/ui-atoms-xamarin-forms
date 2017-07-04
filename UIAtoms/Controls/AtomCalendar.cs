@@ -515,7 +515,7 @@ namespace NeuroSpeech.UIAtoms.Controls
         {
             var items = DateTypes;
             List<AtomDateModel> list = listView.ItemsSource as List<AtomDateModel>;
-            if (list == null)
+            if (list == null || items==null)
                 return;
             foreach(var item in list)
             {
