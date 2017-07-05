@@ -477,8 +477,8 @@ namespace NeuroSpeech.UIAtoms.Controls
           // (sender,value) => true
           null,
           // property changed, delegate
-          //(sender,oldValue,newValue) => ((AtomCalendar)sender).OnDateTypesChanged(oldValue,newValue),
-          null,
+          (sender,oldValue,newValue) => ((AtomCalendar)sender).OnDateTypesChanged(oldValue,newValue),
+          //null,
           // property changing delegate
           // (sender,oldValue,newValue) => {}
           null,
@@ -515,7 +515,7 @@ namespace NeuroSpeech.UIAtoms.Controls
         {
             var items = DateTypes;
             List<AtomDateModel> list = listView.ItemsSource as List<AtomDateModel>;
-            if (list == null)
+            if (list == null || items==null)
                 return;
             foreach(var item in list)
             {
@@ -714,11 +714,13 @@ namespace NeuroSpeech.UIAtoms.Controls
                 start = start.AddDays(1);
             }
 
-            Inc_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-
+            
             listView.ItemTemplate = ItemTemplate;
             listView.ItemHeight = 50;
             listView.ItemsSource = list;
+
+            Inc_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+
 
             listView.HeightRequest = 5 * 52;
 
