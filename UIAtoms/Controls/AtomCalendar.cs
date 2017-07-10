@@ -25,7 +25,7 @@ namespace NeuroSpeech.UIAtoms.Controls
           nameof(CurrentYear),
           typeof(int),
           typeof(AtomCalendar),
-          0,
+          DateTime.Now.Year,
           BindingMode.TwoWay,
           // validate value delegate
            (sender,value) => value is int && ((int)value)>0,
