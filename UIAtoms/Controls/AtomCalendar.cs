@@ -73,12 +73,12 @@ namespace NeuroSpeech.UIAtoms.Controls
           typeof(int),
           typeof(AtomCalendar),
           1,
-          BindingMode.OneWay,
+          BindingMode.TwoWay,
           // validate value delegate
           //(sender,value) => value is int && ((int)value)>0 && ((int)value)<13,
           null,
           // property changed, delegate
-          // (sender,oldValue,newValue) => {}
+          //(sender,oldValue,newValue) => {}
           null,
           // property changing delegate
           // (sender,oldValue,newValue) => {}
@@ -507,6 +507,8 @@ namespace NeuroSpeech.UIAtoms.Controls
             if(inc!=null)
             {
                 inc.CollectionChanged += Inc_CollectionChanged;
+            }
+            if (newValue != null) {
                 Inc_CollectionChanged(newValue, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
             }
         }
