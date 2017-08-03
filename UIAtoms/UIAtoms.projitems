@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AtomCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AtomDevice.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AtomDisposableAction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AtomEnumerableHelpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AtomList.cs" />
