@@ -112,9 +112,10 @@ namespace NeuroSpeech.UIAtoms
         /// 
         /// </summary>
         /// <param name="msg"></param>
-        public void Log(string msg)
+        /// <param name="detail"></param>
+        public void Log(string msg, string detail = null)
         {
-            LogEvent?.Invoke(this, new LogEventArgs { Text = msg });
+            LogEvent?.Invoke(this, new LogEventArgs { Title = msg, Detail = detail });
         }
     }
 
@@ -127,7 +128,13 @@ namespace NeuroSpeech.UIAtoms
         /// <summary>
         /// 
         /// </summary>
-        public string Text { get; set; }
+        public string Title { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Detail { get; set; }
+        
 
         /// <summary>
         /// 
