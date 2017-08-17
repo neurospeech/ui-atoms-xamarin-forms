@@ -54,6 +54,15 @@ namespace NeuroSpeech.UIAtoms
             return UIAtomsApplication.Instance.SetTimeout(() => RunOnUIThread(task), delay);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="task"></param>
+        public void TriggerOnce(Func<Task> task) {
+            TriggerOnce(task, TimeSpan.FromMilliseconds(100));
+        }
+
         /// <summary>
         /// 
         /// </summary>
