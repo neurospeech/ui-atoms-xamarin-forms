@@ -735,7 +735,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
             yearPicker.Items.Clear();
 
-            for (int i = start; i <= end; i++)
+            for (int i = end; i >= start; i--)
             {
                 yearPicker.Items.Add(i.ToString());
             }
