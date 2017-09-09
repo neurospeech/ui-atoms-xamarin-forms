@@ -19,9 +19,24 @@
         <Label>Sample</Label>
       </Grid>
     </ns:AtomListView.Header>-->
+    <ns:AtomListView.GroupHeaderTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid HeightRequest="30"
+                                        BackgroundColor="#cccccc">
+                        <Label Text="{Binding Key}"                               
+                               Margin="5,0"
+                               TextColor="Black"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ns:AtomListView.GroupHeaderTemplate>  
     <ns:AtomListView.ItemTemplate>
       <DataTemplate>
-        <Label Text="{Binding Title}"/>
+        <Label Text="{Binding Title}"
+               Margin="15,0"
+               VerticalOptions="Center" />
       </DataTemplate>
     </ns:AtomListView.ItemTemplate>
   </ns:AtomListView>

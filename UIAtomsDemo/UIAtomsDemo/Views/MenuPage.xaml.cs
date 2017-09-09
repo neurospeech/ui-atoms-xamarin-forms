@@ -23,7 +23,7 @@ namespace UIAtomsDemo
                 new MenuItem{ Category = "Form",  Title = "Forms", Type = typeof(FormDemoPage) },
                 new MenuItem{ Category = "Form",  Title = "Navigator List", Type = typeof(NavigatorListSample) },
                 new MenuItem{ Category = "Form",  Title = "Image", Type = typeof(ImagePage) },
-                new MenuItem { Category = "Form",  Title = "ComboBox", Type=typeof(ComboBoxSample) },
+                new MenuItem { Category = "Form",  Title = "Chooser", Type=typeof(ComboBoxSample) },
                 new MenuItem { Category = "Calendar",  Title= "Calendar", Type=typeof(CalendarPage)}
             };
 

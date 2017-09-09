@@ -37,6 +37,7 @@ namespace NeuroSpeech.UIAtoms.Controls
             contentLabel = new Label {
 
             };
+            contentLabel.VerticalTextAlignment = TextAlignment.Center;
             contentLabel.GestureRecognizers.Add(new TapGestureRecognizer {
                 Command = new AtomCommand(async ()=> await OnTapCommandAsync())
             });
