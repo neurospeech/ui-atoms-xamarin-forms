@@ -177,8 +177,8 @@ namespace NeuroSpeech.UIAtoms.Controls
           nameof(StartDate),
           typeof(DateTime),
           typeof(AtomCalendar),
-          DateTime.MinValue,
-          BindingMode.OneWay,
+          DateTime.Now.AddYears(-100),
+          BindingMode.TwoWay,
           // validate value delegate
           // (sender,value) => true
           null,
@@ -189,8 +189,7 @@ namespace NeuroSpeech.UIAtoms.Controls
           // (sender,oldValue,newValue) => {}
           null,
           // coerce value delegate 
-          // (sender,value) => value
-          null,
+           null,
           // create default value delegate
            s => DateTime.Now.AddYears(-100)
           //null
@@ -234,7 +233,7 @@ namespace NeuroSpeech.UIAtoms.Controls
           typeof(DateTime),
           typeof(AtomCalendar),
           DateTime.MaxValue,
-          BindingMode.OneWay,
+          BindingMode.TwoWay,
           // validate value delegate
           // (sender,value) => true
           null,
@@ -245,7 +244,6 @@ namespace NeuroSpeech.UIAtoms.Controls
           // (sender,oldValue,newValue) => {}
           null,
           // coerce value delegate 
-          // (sender,value) => value
           null,
           // create default value delegate
           s => DateTime.Now.AddYears(100)
@@ -732,8 +730,8 @@ namespace NeuroSpeech.UIAtoms.Controls
         {
             int start = StartDate.Year;
             int end = EndDate.Year;
-
             yearPicker.Items.Clear();
+            
 
             for (int i = end; i >= start; i--)
             {
