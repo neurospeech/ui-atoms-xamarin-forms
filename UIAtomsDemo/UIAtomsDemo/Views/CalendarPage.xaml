@@ -21,7 +21,11 @@
     
   <ns:AtomForm ShowSearch="False">
     <ns:AtomFieldGroup Category="Header">
-      <ns:AtomDatePicker ns:AtomForm.Label="Date:"/>
+      <ns:AtomDatePicker 
+          ns:AtomForm.Label="Date:"
+          StartDate="{Binding StartDate}"
+          EndDate="{Binding EndDate}"
+          />
     </ns:AtomFieldGroup>
   </ns:AtomForm>
 </ContentPage>
