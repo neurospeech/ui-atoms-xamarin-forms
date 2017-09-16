@@ -174,7 +174,9 @@ namespace NeuroSpeech.UIAtoms.Controls.Internal
 
             this.ItemAppearing += (s, e) =>
             {
-
+                if (!_visibleItems.Contains(e.Item)) {
+                    _visibleItems.Add(e.Item);
+                }
                 var currentItem = e.Item;
                 object last = GetLastItem();
                 if (last == null)
@@ -196,9 +198,21 @@ namespace NeuroSpeech.UIAtoms.Controls.Internal
                 
             };
 
+            this.ItemDisappearing += (s, e) => {
+                _visibleItems.Remove(e.Item);
+            };
+
             //this.SetBinding(OverScrollCommandProperty, new Binding { Path = "OverScrollCommand" });
 
             
+        }
+
+        private List<object> _visibleItems = new List<object>();
+
+        public IEnumerable<object> VisibleItems {
+            get {
+                return _visibleItems;
+            }
         }
 
         private object GetLastItem()

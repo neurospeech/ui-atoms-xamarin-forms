@@ -215,6 +215,7 @@ namespace NeuroSpeech.UIAtoms.Pages
                         if (vf != null)
                         {
                             listView.SelectedItems.Add(item);
+
                         }
                     }
                 }
