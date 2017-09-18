@@ -545,8 +545,11 @@ namespace NeuroSpeech.UIAtoms.Controls
 
 
         private readonly AtomGridView listView;
-        private Picker monthPicker;
-        private Picker yearPicker;
+        private AtomChooser monthPicker;
+        private AtomChooser yearPicker;
+
+        private AtomList<AtomData<int>> yearList = new AtomList<AtomData<int>>();
+        private AtomList<AtomData<int>> monthList = new AtomList<AtomData<int>>();
 
         /// <summary>
         /// 
@@ -585,10 +588,10 @@ namespace NeuroSpeech.UIAtoms.Controls
             this.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             this.RowDefinitions.Add(new RowDefinition { });
 
-            this.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
-            this.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(3, GridUnitType.Star) });
             this.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
-            this.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            this.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(8, GridUnitType.Star) });
+            this.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(5, GridUnitType.Star) });
+            this.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
 
 
             listView = new AtomGridView();
@@ -610,25 +613,75 @@ namespace NeuroSpeech.UIAtoms.Controls
                 return Task.CompletedTask;
             });
 
-            monthPicker = new Picker();
+            monthPicker = new AtomChooser() {
+                ValuePath = "Value"
+            };
 
             DateTime start = new DateTime(2012, 1, 1);
             for (int i = 0; i < 12; i++) {
-                monthPicker.Items.Add(start.ToString("MMMMMM"));
+                monthList.Add( new AtomData<int>(start.ToString("MMMMMM"),i+1));
                 start = start.AddMonths(1);
             }
+
+            //monthPicker.SelectedIndexChanged += (s, e) => {
+            //    CurrentMonth = monthPicker.SelectedIndex + 1;
+            //};
+
+            //monthPicker.SelectedIndex = CurrentMonth - 1;
+
+
+
+
             
-            monthPicker.SelectedIndexChanged += (s, e) => {
-                CurrentMonth = monthPicker.SelectedIndex + 1;
+
+            yearPicker = new AtomChooser() {
+                ValuePath = "Value"
             };
 
-            monthPicker.SelectedIndex = CurrentMonth - 1;
+            yearPicker.LabelPath = monthPicker.LabelPath = "Label";
+
+            yearPicker.ItemTemplate = monthPicker.ItemTemplate = new DataTemplate(() => {
+                Label label = new Label();
+                label.SetBinding(Label.TextProperty, new Binding() {
+                    Path = "Label"
+                });
+                return label;
+            });
 
 
-            yearPicker = new Picker();
-            yearPicker.SelectedIndexChanged += (s, e) => {
-                CurrentYear = int.Parse(yearPicker.Items[yearPicker.SelectedIndex]);
-            };
+
+            //yearPicker.SelectedIndexChanged += (s, e) => {
+            //    CurrentYear = int.Parse(yearPicker.Items[yearPicker.SelectedIndex]);
+            //};
+
+            UpdateYears();
+
+
+
+
+
+            monthPicker.SetBinding(AtomChooser.ValueProperty, new Binding()
+            {
+                Source = this,
+                Path = "CurrentMonth",
+                Mode = BindingMode.TwoWay
+
+            });
+
+            monthPicker.ShowSearch = false;
+            monthPicker.ShowAsPopupButton = true;
+
+            yearPicker.ShowSearch = false;
+            yearPicker.ShowAsPopupButton = true;
+
+            yearPicker.SetBinding(AtomChooser.ValueProperty, new Binding() {
+                Source = this,
+                Path = "CurrentYear",
+                Mode = BindingMode.TwoWay
+            });
+
+            yearPicker.ItemsSource = yearList;
+            monthPicker.ItemsSource = monthList;
 
 
             // first row..
@@ -649,7 +702,6 @@ namespace NeuroSpeech.UIAtoms.Controls
             this.Children.Add(rightButton);
 
 
-            UpdateYears();
 
             UpdateList();
 
@@ -698,10 +750,6 @@ namespace NeuroSpeech.UIAtoms.Controls
 
             DateTime start = new DateTime(CurrentYear, currentMonth, 1);
 
-            monthPicker.SelectedIndex = currentMonth - 1;
-
-            yearPicker.SelectedIndex = yearPicker.Items.IndexOf(CurrentYear.ToString());
-
             while (start.DayOfWeek != DayOfWeek.Monday) {
                 start = start.AddDays(-1);
             }
@@ -730,26 +778,32 @@ namespace NeuroSpeech.UIAtoms.Controls
         {
             int start = StartDate.Year;
             int end = EndDate.Year;
-            yearPicker.Items.Clear();
-            
+
+            List<AtomData<int>> list = new List<AtomData<int>>();
 
             for (int i = end; i >= start; i--)
             {
-                yearPicker.Items.Add(i.ToString());
+                list.Add(new AtomData<int>(i.ToString(),i));
             }
 
-            SetCurrentYear();
+            yearList.Replace(list);
+
+            //yearPicker.SelectedIndex = -1;
+            
+            
+
+            //SetCurrentYear();
         }
 
-        private void SetCurrentYear()
-        {
-            string y = CurrentYear.ToString();
+        //private void SetCurrentYear()
+        //{
+        //    string y = CurrentYear.ToString();
 
-            int i = yearPicker.Items.IndexOf(y);
-            if (i == -1)
-                i = 0;
-            yearPicker.SelectedIndex = i;
-        }
+        //    int i = yearPicker.Items.IndexOf(y);
+        //    if (i == -1)
+        //        i = 0;
+        //    yearPicker.SelectedIndex = i;
+        //}
     }
 
     /// <summary>

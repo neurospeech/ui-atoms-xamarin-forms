@@ -27,6 +27,124 @@ namespace NeuroSpeech.UIAtoms.Controls
             };
         }
 
+
+
+        #region Property StartDate
+
+        /// <summary>
+        /// Bindable Property StartDate
+        /// </summary>
+        public static readonly BindableProperty StartDateProperty = BindableProperty.Create(
+          nameof(StartDate),
+          typeof(DateTime),
+          typeof(AtomDatePicker),
+          DateTime.MinValue,
+          BindingMode.OneWay,
+          // validate value delegate
+          // (sender,value) => true
+          null,
+          // property changed, delegate
+          //(sender,oldValue,newValue) => ((AtomDatePicker)sender).OnStartDateChanged(oldValue,newValue),
+          null,
+          // property changing delegate
+          // (sender,oldValue,newValue) => {}
+          null,
+          // coerce value delegate 
+          // (sender,value) => value
+          null,
+          // create default value delegate
+          (a) => DateTime.Now.AddYears(-100)
+          //null
+        );
+
+        /*
+        /// <summary>
+        /// On StartDate changed
+        /// </summary>
+        /// <param name="oldValue">Old Value</param>
+        /// <param name="newValue">New Value</param>
+        protected virtual void OnStartDateChanged(object oldValue, object newValue)
+        {
+            
+        }*/
+
+
+        /// <summary>
+        /// Property StartDate
+        /// </summary>
+        public DateTime StartDate
+        {
+            get
+            {
+                return (DateTime)GetValue(StartDateProperty);
+            }
+            set
+            {
+                SetValue(StartDateProperty, value);
+            }
+        }
+        #endregion
+
+
+
+        #region Property EndDate
+
+        /// <summary>
+        /// Bindable Property EndDate
+        /// </summary>
+        public static readonly BindableProperty EndDateProperty = BindableProperty.Create(
+          nameof(EndDate),
+          typeof(DateTime),
+          typeof(AtomDatePicker),
+          DateTime.MaxValue,
+          BindingMode.OneWay,
+          // validate value delegate
+          // (sender,value) => true
+          null,
+          // property changed, delegate
+          //(sender,oldValue,newValue) => ((AtomDatePicker)sender).OnEndDateChanged(oldValue,newValue),
+          null,
+          // property changing delegate
+          // (sender,oldValue,newValue) => {}
+          null,
+          // coerce value delegate 
+          // (sender,value) => value
+          null,
+          // create default value delegate
+          d => DateTime.Now.AddYears(100)
+          //null
+        );
+
+        /*
+        /// <summary>
+        /// On EndDate changed
+        /// </summary>
+        /// <param name="oldValue">Old Value</param>
+        /// <param name="newValue">New Value</param>
+        protected virtual void OnEndDateChanged(object oldValue, object newValue)
+        {
+            
+        }*/
+
+
+        /// <summary>
+        /// Property EndDate
+        /// </summary>
+        public DateTime EndDate
+        {
+            get
+            {
+                return (DateTime)GetValue(EndDateProperty);
+            }
+            set
+            {
+                SetValue(EndDateProperty, value);
+            }
+        }
+        #endregion
+
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -60,6 +178,8 @@ namespace NeuroSpeech.UIAtoms.Controls
 
                 //calendar.BackgroundColor = Color.White;
                 calendar.SelectedDate = this.Value;
+                calendar.StartDate = this.StartDate;
+                calendar.EndDate = this.EndDate;
                 calendar.TapCommand = new AtomCommand<AtomDateModel>(async (model) =>
                 {
 

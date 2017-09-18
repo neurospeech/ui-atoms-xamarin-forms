@@ -116,6 +116,8 @@ namespace NeuroSpeech.UIAtoms.Controls
         public ICommand ChangeCommand { get; }
 
 
+        public bool ShowAsPopupButton { get; set; }
+
 
         private async Task OnTapCommandAsync() {
 
@@ -128,7 +130,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
                 ChooserView cv = new Pages.ChooserView(this);
 
-                if (currentPage is AtomPopupPage)
+                if (ShowAsPopupButton || currentPage is AtomPopupPage)
                 {
                     AtomPopupPage p = new Controls.AtomPopupPage() {
                         Content = cv,
@@ -1569,25 +1571,43 @@ namespace NeuroSpeech.UIAtoms.Controls
 
 
                 System.Collections.IList convertedValues = null;
-                
+
                 Func<object, bool> f = (item) =>
                 {
                     object v = item.GetPropertyValue(valuePath);
                     if (v == null)
                         return false;
-                    if (v is long || v is int) {
-                        if (convertedValues == null) {
+                    if (v is long)
+                    {
+                        if (convertedValues == null)
+                        {
                             convertedValues = values.Select(x => long.Parse(x)).ToList();
                         }
                         return convertedValues.Contains((long)v);
                     }
-                    if (v is double || v is float)
+                    if (v is int)
+                    {
+                        if (convertedValues == null)
+                        {
+                            convertedValues = values.Select(x => int.Parse(x)).ToList();
+                        }
+                        return convertedValues.Contains((int)v);
+                    }
+                    if (v is double)
                     {
                         if (convertedValues == null)
                         {
                             convertedValues = values.Select(x => double.Parse(x)).ToList();
                         }
                         return convertedValues.Contains((double)v);
+                    }
+                    if (v is float)
+                    {
+                        if (convertedValues == null)
+                        {
+                            convertedValues = values.Select(x => float.Parse(x)).ToList();
+                        }
+                        return convertedValues.Contains((float)v);
                     }
                     if (v is decimal)
                     {
@@ -1608,7 +1628,13 @@ namespace NeuroSpeech.UIAtoms.Controls
                     return values.Contains(v?.ToString());
                 };
 
-                selectedItems.Replace(items.Where(f));
+                var si = items.Where(f).ToList();
+
+                selectedItems.Replace(si);
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.Fail(ex.Message, ex.ToString());
+                throw;
             }
             finally
             {

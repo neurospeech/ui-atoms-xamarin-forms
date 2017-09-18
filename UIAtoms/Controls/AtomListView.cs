@@ -2290,6 +2290,19 @@ namespace NeuroSpeech.UIAtoms.Controls
             this.SetValue(HasSelectionPropertyKey, selectedItems.Any());
             SetValue(SelectedItemProperty, selectedItems.FirstOrDefault());
             SelectionChanged?.Invoke(this, EventArgs.Empty);
+
+            EnsureSelectionVisible();
+
+        }
+
+        protected virtual void EnsureSelectionVisible()
+        {
+            var notVisible = selectedItems.Where(x => !listView.VisibleItems.Contains(x)).FirstOrDefault();
+            if (notVisible != null)
+            {
+                listView.ScrollTo(notVisible, ScrollToPosition.MakeVisible, false);
+            }
+            
         }
 
 

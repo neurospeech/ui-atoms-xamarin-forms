@@ -186,7 +186,10 @@ namespace NeuroSpeech.UIAtoms.Controls
         #endregion
 
 
-
+        protected override void EnsureSelectionVisible()
+        {
+            
+        }
 
         protected override void SetItemTemplate(DataTemplate newValue)
         {

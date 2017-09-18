@@ -169,12 +169,12 @@ namespace NeuroSpeech.UIAtoms.Pages
                         {
                             // grouped list filtering...
 
-                            listView.ItemsSource = glist.Where(x => x.Any(i => Filter(i, st, fp)));
+                            listView.ItemsSource = glist.Where(x => x.Any(i => Filter(i, st, fp) || i == listView.SelectedItem ));
 
                         }
                         else
                         {
-                            listView.ItemsSource = list.Where(i => Filter(i, st, fp));
+                            listView.ItemsSource = list.Where(i => Filter(i, st, fp) || i == listView.SelectedItem);
                         }
 
 
@@ -215,6 +215,7 @@ namespace NeuroSpeech.UIAtoms.Pages
                         if (vf != null)
                         {
                             listView.SelectedItems.Add(item);
+
                         }
                     }
                 }
@@ -245,6 +246,10 @@ namespace NeuroSpeech.UIAtoms.Pages
                 var value = i.GetPropertyValue(prop);
                 if (value == null)
                     continue;
+
+                // we always want to show selection...
+                if (i == listView.SelectedItem)
+                    return true;
                 if (value.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) != -1)
                     return true;
             }
