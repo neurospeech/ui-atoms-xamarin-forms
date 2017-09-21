@@ -23,7 +23,7 @@
         AllowMultipleSelection="True"
         LabelPath="Label"
         ValuePath="Value"
-        
+        FilterPath="Label,Value"
       />
 
       <ns:AtomRepeator

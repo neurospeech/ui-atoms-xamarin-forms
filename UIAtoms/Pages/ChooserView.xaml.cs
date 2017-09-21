@@ -67,6 +67,15 @@ namespace NeuroSpeech.UIAtoms.Pages
 
         private AtomListView listView = null;
 
+        private bool isSearching = false;
+
+        private IDisposable BeginEdit() {
+            isSearching = true;
+            return new AtomDisposableAction(()=> {
+                isSearching = false;
+            });
+        }
+
         private void Init()
         {
 
@@ -115,6 +124,8 @@ namespace NeuroSpeech.UIAtoms.Pages
             }
 
             listView.SelectionChanged += (s, e) => {
+                if (isSearching)
+                    return;
                 searchBar?.Unfocus();
             };
             //listView.ItemsSource = Chooser.ItemsSource;
@@ -141,43 +152,48 @@ namespace NeuroSpeech.UIAtoms.Pages
                 }, TimeSpan.FromMilliseconds(100));
 
                 searchBar.TextChanged += (s, e) => {
-                    string st = e.NewTextValue;
 
-                    Chooser.SearchText = st;
-
-                    string fp = Chooser.FilterPath;
-                    if (string.IsNullOrWhiteSpace(fp))
+                    using (BeginEdit())
                     {
-                        return;
-                    }
 
-                    if (string.IsNullOrWhiteSpace(st))
-                    {
-                        listView.SetBinding(AtomListView.ItemsSourceProperty, new Binding()
+                        string st = e.NewTextValue;
+
+                        Chooser.SearchText = st;
+
+                        string fp = Chooser.FilterPath;
+                        if (string.IsNullOrWhiteSpace(fp))
                         {
-                            Source = Chooser,
-                            Path = nameof(AtomChooser.ItemsSource)
-                        });
+                            return;
+                        }
 
-                    }
-                    else
-                    {
-                        var list = Chooser.ItemsSource.Cast<object>();
-
-                        var glist = list as IEnumerable<IGrouping<object, object>>;
-                        if (glist != null)
+                        if (string.IsNullOrWhiteSpace(st))
                         {
-                            // grouped list filtering...
-
-                            listView.ItemsSource = glist.Where(x => x.Any(i => Filter(i, st, fp) || i == listView.SelectedItem ));
+                            listView.SetBinding(AtomListView.ItemsSourceProperty, new Binding()
+                            {
+                                Source = Chooser,
+                                Path = nameof(AtomChooser.ItemsSource)
+                            });
 
                         }
                         else
                         {
-                            listView.ItemsSource = list.Where(i => Filter(i, st, fp) || i == listView.SelectedItem);
+                            var list = Chooser.ItemsSource.Cast<object>();
+
+                            var glist = list as IEnumerable<IGrouping<object, object>>;
+                            if (glist != null)
+                            {
+                                // grouped list filtering...
+
+                                listView.ItemsSource = glist.Where(x => x.Any(i => Filter(i, st, fp) || i == listView.SelectedItem));
+
+                            }
+                            else
+                            {
+                                listView.ItemsSource = list.Where(i => Filter(i, st, fp) || i == listView.SelectedItem);
+                            }
+
+
                         }
-
-
                     }
 
 
@@ -190,46 +206,51 @@ namespace NeuroSpeech.UIAtoms.Pages
         private void ListView_ItemsChanged(object sender, EventArgs e)
         {
             UIAtomsApplication.Instance.TriggerOnce(() => {
-                if (Chooser.Value == null)
-                {
-                    return;
-                }
 
-                string valuePath = Chooser.ValuePath;
-                if (string.IsNullOrWhiteSpace(valuePath))
-                    return;
-
-                if (listView.AllowMultipleSelection)
+                using (BeginEdit())
                 {
-                    var values = Chooser.Value.ToString()
-                        .Split(Chooser.ValueSeparator.Trim().ToCharArray())
-                        .Select(x => x.Trim())
-                        .ToList();
-                    foreach (var item in listView.ItemsSource)
+
+                    if (Chooser.Value == null)
                     {
-                        var v = item.GetPropertyValue(valuePath)?.ToString();
-                        if (v == null)
-                            continue;
+                        return;
+                    }
 
-                        var vf = values.FirstOrDefault(x => string.Equals(v, x, StringComparison.OrdinalIgnoreCase));
-                        if (vf != null)
+                    string valuePath = Chooser.ValuePath;
+                    if (string.IsNullOrWhiteSpace(valuePath))
+                        return;
+
+                    if (listView.AllowMultipleSelection)
+                    {
+                        var values = Chooser.Value.ToString()
+                            .Split(Chooser.ValueSeparator.Trim().ToCharArray())
+                            .Select(x => x.Trim())
+                            .ToList();
+                        foreach (var item in listView.ItemsSource)
                         {
-                            listView.SelectedItems.Add(item);
+                            var v = item.GetPropertyValue(valuePath)?.ToString();
+                            if (v == null)
+                                continue;
 
+                            var vf = values.FirstOrDefault(x => string.Equals(v, x, StringComparison.OrdinalIgnoreCase));
+                            if (vf != null)
+                            {
+                                listView.SelectedItems.Add(item);
+
+                            }
                         }
                     }
-                }
-                else
-                {
-                    var value = Chooser.Value;
-                    foreach (var item in listView.ItemsSource)
+                    else
                     {
-                        var v = item.GetPropertyValue(valuePath);
-                        if (value == v || value.Equals(v))
+                        var value = Chooser.Value;
+                        foreach (var item in listView.ItemsSource)
                         {
-                            listView.SelectedItems.Clear();
-                            listView.SelectedItems.Add(item);
-                            break;
+                            var v = item.GetPropertyValue(valuePath);
+                            if (value == v || value.Equals(v))
+                            {
+                                listView.SelectedItems.Clear();
+                                listView.SelectedItems.Add(item);
+                                break;
+                            }
                         }
                     }
                 }
