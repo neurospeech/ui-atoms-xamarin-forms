@@ -27,7 +27,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
             var af = form?.ValidateCommand;
 
-            af?.Execute(this);
+            af?.Execute(this.CommandParameter);
             return Task.CompletedTask;
         }
     }

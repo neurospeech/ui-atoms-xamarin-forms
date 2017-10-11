@@ -538,7 +538,7 @@ namespace NeuroSpeech.UIAtoms.Controls
         /// <summary>
         /// 
         /// </summary>
-        protected Task OnValidateCommand() {
+        protected Task OnValidateCommand(Object parameter) {
 
             UIAtomsApplication.Instance.TriggerOnce(() =>
             {
@@ -546,7 +546,7 @@ namespace NeuroSpeech.UIAtoms.Controls
                 UpdateIsValid();
                 if (IsValid)
                 {
-                    SubmitCommand?.Execute(BindingContext);
+                    SubmitCommand?.Execute(parameter ?? BindingContext);
                 }
                 else
                 {
