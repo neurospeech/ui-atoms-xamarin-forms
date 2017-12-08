@@ -40,6 +40,66 @@ namespace NeuroSpeech.UIAtoms.Controls
     public class AtomListView : ContentView
     {
 
+
+
+        #region Property AutoScrollOnSelection
+
+        /// <summary>
+        /// Bindable Property AutoScrollOnSelection
+        /// </summary>
+        public static readonly BindableProperty AutoScrollOnSelectionProperty = BindableProperty.Create(
+          nameof(AutoScrollOnSelection),
+          typeof(bool),
+          typeof(AtomListView),
+          true,
+          BindingMode.OneWay,
+          // validate value delegate
+          // (sender,value) => true
+          null,
+          // property changed, delegate
+          //(sender,oldValue,newValue) => ((AtomListView)sender).OnAutoScrollOnSelectionChanged(oldValue,newValue),
+          null,
+          // property changing delegate
+          // (sender,oldValue,newValue) => {}
+          null,
+          // coerce value delegate 
+          // (sender,value) => value
+          null,
+          // create default value delegate
+          // () => Default(T)
+          null
+        );
+
+        /*
+        /// <summary>
+        /// On AutoScrollOnSelection changed
+        /// </summary>
+        /// <param name="oldValue">Old Value</param>
+        /// <param name="newValue">New Value</param>
+        protected virtual void OnAutoScrollOnSelectionChanged(object oldValue, object newValue)
+        {
+            
+        }*/
+
+
+        /// <summary>
+        /// Property AutoScrollOnSelection
+        /// </summary>
+        public bool AutoScrollOnSelection
+        {
+            get
+            {
+                return (bool)GetValue(AutoScrollOnSelectionProperty);
+            }
+            set
+            {
+                SetValue(AutoScrollOnSelectionProperty, value);
+            }
+        }
+        #endregion
+
+
+
         private AtomList<object> selectedItems = new AtomList<object>();
 
         /// <summary>
@@ -2297,6 +2357,8 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         protected virtual void EnsureSelectionVisible()
         {
+            if (!AutoScrollOnSelection)
+                return;
             var notVisible = selectedItems.Where(x => !listView.VisibleItems.Contains(x)).FirstOrDefault();
             if (notVisible != null)
             {

@@ -87,7 +87,7 @@ namespace NeuroSpeech.UIAtoms.Pages
             {
                 // take navigator list...
                 listView = new AtomNavigatorListView();
-
+                listView.AutoScrollOnSelection = false;
                 /*this.ToolbarItems.Add(new ToolbarItem
                 {
                     Text = "Done",
