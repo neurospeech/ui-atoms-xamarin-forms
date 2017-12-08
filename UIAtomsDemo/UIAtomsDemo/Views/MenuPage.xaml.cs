@@ -25,7 +25,8 @@ namespace UIAtomsDemo
                 new MenuItem{ Category = "Form",  Title = "Image", Type = typeof(ImagePage) },
                 new MenuItem { Category = "Form",  Title = "Chooser", Type=typeof(ComboBoxSample) },
                 new MenuItem { Category = "Calendar",  Title= "Date Picker", Type=typeof(CalendarPage)},
-                new MenuItem { Category = "Calendar",  Title= "Calendar", Type=typeof(AtomCalendarPage)}
+                new MenuItem { Category = "Calendar",  Title= "Calendar", Type=typeof(AtomCalendarPage)},
+                new MenuItem { Category = "Media",  Title= "Video Player", Type=typeof(MediaPlayerPage)}
             };
 
             this.menuList.ItemsSource = items.GroupBy(x=>x.Category).ToList();

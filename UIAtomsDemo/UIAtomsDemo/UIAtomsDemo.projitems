@@ -33,12 +33,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AtomCalendarPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CalendarPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FormDemoPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MediaPlayerPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NavigatorListSampleViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AtomCalendarPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\CalendarPage.xaml.cs">
       <DependentUpon>CalendarPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MediaPlayerPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MenuPage.xaml.cs">
@@ -94,6 +98,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AtomCalendarPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MediaPlayerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
