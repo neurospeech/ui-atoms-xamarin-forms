@@ -45,13 +45,15 @@ namespace NeuroSpeech.UIAtoms.Controls
 
             if (Element == null)
                 return;
-
+            
             videoView = new VideoView(Xamarin.Forms.Forms.Context);
-            var vlp = new Android.Widget.RelativeLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
+            var vlp = new Android.Widget.RelativeLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
             vlp.AddRule(LayoutRules.CenterInParent);
-            videoView.LayoutParameters = vlp;
             //vlp.AddRule(LayoutRules.AlignParentLeft);
             //vlp.AddRule(LayoutRules.AlignParentRight);
+            //vlp.AddRule(LayoutRules.AlignParentBottom);
+            videoView.LayoutParameters = vlp;
+
             //vlp.AddRule(LayoutRules.fill);
             var mc = new MediaController(Xamarin.Forms.Forms.Context);
             videoView.SetMediaController(mc);

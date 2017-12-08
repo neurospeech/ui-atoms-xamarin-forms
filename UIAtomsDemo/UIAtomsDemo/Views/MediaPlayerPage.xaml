@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ns="clr-namespace:NeuroSpeech.UIAtoms.Controls;assembly=NeuroSpeech.UIAtoms"
-             x:Class="UIAtomsDemo.Views.MediaPlayerPage">
+             x:Class="UIAtomsDemo.Views.MediaPlayerPage" BackgroundColor="Black">
     <ContentPage.Content>
-        <ns:AtomVideoPlayer Source="{Binding VideoUrl}"
+        <ns:AtomVideoPlayer Source="{Binding VideoUrl}" BackgroundColor="Black"
                         IsPlaying="True" 
                         AutoPlay="True"/>
     </ContentPage.Content>
