@@ -47,6 +47,28 @@ namespace NeuroSpeech.UIAtoms.Drawing
             
         }
 
+        public virtual async Task<string> RotateAsync(string source,int angle, string side)
+        {
+            var image = await LoadAsync(source);
+            return await Task.Run<string>(() =>
+            {
+
+                string name = System.IO.Path.GetFileNameWithoutExtension(source);
+                string ext = System.IO.Path.GetExtension(source);
+                var tempFile = Java.IO.File.CreateTempFile(name, ext);
+                Matrix matrix = new Matrix();
+                matrix.PostRotate(angle);
+                image = Bitmap.CreateBitmap(image,0,0,image.Width,image.Height,matrix,true);
+                tempFile.DeleteOnExit();
+                using (var s = System.IO.File.OpenWrite(tempFile.CanonicalPath))
+                {
+                    image.Compress(Bitmap.CompressFormat.Png, 0, s);
+                }
+                return tempFile.CanonicalPath;
+            });
+
+        }
+
         public override async Task<Bitmap> LoadAsync(string source)
         {
 

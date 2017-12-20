@@ -39,6 +39,29 @@ namespace NeuroSpeech.UIAtoms.Drawing
             });
         }
 
+        public virtual async Task<string> RotateAsync(string source, int angle, string side)
+        {
+            var image = await LoadAsync(source);
+            return await Task.Run<string>(async () =>
+            {
+
+                string name = System.IO.Path.GetFileNameWithoutExtension(source);
+                string ext = System.IO.Path.GetExtension(source);
+                var tempFile = $"{UIAtomsApplication.Instance.CacheDir.FullName}/{name}-{(Guid.NewGuid().ToString().Trim('{', '}'))}{ext}";
+                var r = new CGRect(0, 0, image.Size.Height, image.Size.Width);
+                var cgi = image.CGImage.WithImageInRect(r);
+                var bitmap= new UIImage(cgi);
+                var imageRotation = side.Equals("Left") ? UIImageOrientation.Left : UIImageOrientation.Right;
+                image  = UIImage.FromImage(bitmap.CGImage, bitmap.CurrentScale, imageRotation);
+                using (var s = System.IO.File.OpenWrite(tempFile))
+                {
+                    var iss = image.AsPNG().AsStream();
+                    await iss.CopyToAsync(s);
+                }
+                return tempFile;
+            });
+        }
+
         public override async Task<UIImage> LoadAsync(string source)
         {
 
