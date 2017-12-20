@@ -24,9 +24,10 @@ namespace NeuroSpeech.UIAtoms.Drawing
             return await Task.Run<string>(async () =>
             {
 
+
                 string name = System.IO.Path.GetFileNameWithoutExtension(source);
                 string ext = System.IO.Path.GetExtension(source);
-                var tempFile = $"{UIAtomsApplication.Instance.CacheDir.FullName}/{name}-{(Guid.NewGuid().ToString().Trim('{', '}'))}{ext}";
+                var tempFile = $"{System.IO.Path.GetTempPath()}/{name}-{(Guid.NewGuid().ToString().Trim('{', '}'))}{ext}";
                 var r = new CGRect(d.Left, d.Top, d.Width, d.Height);
                 var cgi = image.CGImage.WithImageInRect(r);
                 image = new UIImage(cgi);
@@ -44,15 +45,25 @@ namespace NeuroSpeech.UIAtoms.Drawing
             var image = await LoadAsync(source);
             return await Task.Run<string>(async () =>
             {
+                //var sourceSize = image.Size;
+                //UIGraphics.BeginImageContextWithOptions(new CGSize(sourceSize.Height, sourceSize.Width), true, 1.0f);
+                //CGContext bitmap = UIGraphics.GetCurrentContext();
+                //bitmap.DrawImage(new CGRect(0, 0, sourceSize.Height, sourceSize.Width), image.CGImage);
+                //bitmap.RotateCTM((float)(side.Equals("Left") ? Math.PI / 2 : -Math.PI / 2));
+                
+
+                //var r = new CGRect(0, 0, image.Size.Height, image.Size.Width);
+                //var cgi = image.CGImage.WithImageInRect(r);
+                //var bitmap1= new UIImage(cgi);
+
 
                 string name = System.IO.Path.GetFileNameWithoutExtension(source);
                 string ext = System.IO.Path.GetExtension(source);
-                var tempFile = $"{UIAtomsApplication.Instance.CacheDir.FullName}/{name}-{(Guid.NewGuid().ToString().Trim('{', '}'))}{ext}";
-                var r = new CGRect(0, 0, image.Size.Height, image.Size.Width);
-                var cgi = image.CGImage.WithImageInRect(r);
-                var bitmap= new UIImage(cgi);
+                var tempFile = $"{System.IO.Path.GetTempPath()}/{name}-{(Guid.NewGuid().ToString().Trim('{', '}'))}{ext}";
+
                 var imageRotation = side.Equals("Left") ? UIImageOrientation.Left : UIImageOrientation.Right;
-                image  = UIImage.FromImage(bitmap.CGImage, bitmap.CurrentScale, imageRotation);
+                image  = UIImage.FromImage(image.CGImage, image.CurrentScale, imageRotation);
+
                 using (var s = System.IO.File.OpenWrite(tempFile))
                 {
                     var iss = image.AsPNG().AsStream();
