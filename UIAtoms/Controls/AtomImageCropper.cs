@@ -29,9 +29,14 @@ namespace NeuroSpeech.UIAtoms.Controls
 
 
 
+
         public ICommand CropCommand { get; }
 
         public ICommand UndoCommand { get; }
+
+        public ICommand RotateLeft { get; }
+
+        public ICommand RotateRight { get; }
 
         //ScrollView scrollView = new ScrollView();
 
@@ -93,6 +98,18 @@ namespace NeuroSpeech.UIAtoms.Controls
                 await OnCropCommandAsync();
             });
 
+            RotateLeft = new AtomCommand(async () =>
+            {
+                await OnRotateCommandAsync("Left");
+            });
+
+            
+
+            RotateRight = new AtomCommand(async () =>
+            {
+                await OnRotateCommandAsync("Right");
+            });
+
             UndoCommand = new AtomCommand(() =>
             {
 
@@ -138,6 +155,32 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         }
 
+        private async Task OnRotateCommandAsync(string side)
+        {
+            try
+            {
+                int angle = 0;
+                if (side.Equals("Left"))
+                    angle = Convert.ToInt32(croppedImage.Rotation + 270);
+                else
+                    angle = Convert.ToInt32(croppedImage.Rotation + 90);
+
+
+                var imageProvider = DependencyService.Get<AtomImageProvider>();
+
+                string path = await imageProvider.RotateAsync(Source, angle, side);
+                
+                Source = path;
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Fail("Rotate Failed", ex.ToString());
+                await DependencyService.Get<INotificationService>().NotifyAsync("Rotation Failed");
+            }
+
+        }
+
         private string originalSource = null;
 
         private void OnCropContainerPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -170,6 +213,7 @@ namespace NeuroSpeech.UIAtoms.Controls
                 case nameof(AtomImage.Scale):
                 case nameof(AtomImage.Width):
                 case nameof(AtomImage.Height):
+                //case nameof(AtomImage.Rotation):
 
                     UpdateCropSize();
                     break;
@@ -434,10 +478,11 @@ namespace NeuroSpeech.UIAtoms.Controls
             {
                 CroppedFile = null;
             }
-            if (croppedImage.Source != null)
-            {
-                RecreateImage();
-            }
+            //if (croppedImage.Source != null)
+            //{
+               
+            //}
+            RecreateImage();
             croppedImage.Source = src;
             this.Scaled = false;
         }

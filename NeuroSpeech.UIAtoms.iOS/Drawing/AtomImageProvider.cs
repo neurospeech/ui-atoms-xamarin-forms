@@ -24,12 +24,41 @@ namespace NeuroSpeech.UIAtoms.Drawing
             return await Task.Run<string>(async () =>
             {
 
+
                 string name = System.IO.Path.GetFileNameWithoutExtension(source);
                 string ext = System.IO.Path.GetExtension(source);
-                var tempFile = $"{UIAtomsApplication.Instance.CacheDir.FullName}/{name}-{(Guid.NewGuid().ToString().Trim('{', '}'))}{ext}";
+                var tempFile = $"{System.IO.Path.GetTempPath()}/{name}-{(Guid.NewGuid().ToString().Trim('{', '}'))}{ext}";
                 var r = new CGRect(d.Left, d.Top, d.Width, d.Height);
                 var cgi = image.CGImage.WithImageInRect(r);
                 image = new UIImage(cgi);
+                using (var s = System.IO.File.OpenWrite(tempFile))
+                {
+                    var iss = image.AsPNG().AsStream();
+                    await iss.CopyToAsync(s);
+                }
+                return tempFile;
+            });
+        }
+
+        public virtual async Task<string> RotateAsync(string source, int angle, string side)
+        {
+            var image = await LoadAsync(source);
+            return await Task.Run<string>(async () =>
+            {
+                string name = System.IO.Path.GetFileNameWithoutExtension(source);
+                string ext = System.IO.Path.GetExtension(source);
+                var tempFile = $"{System.IO.Path.GetTempPath()}/{name}-{(Guid.NewGuid().ToString().Trim('{', '}'))}{ext}";
+
+                var original = image;
+
+                var imageRotation = side.Equals("Left") ? UIImageOrientation.Left : UIImageOrientation.Right;
+                image = UIImage.FromImage(original.CGImage, original.CurrentScale, imageRotation);
+                var rect = new CGRect(0, 0, original.Size.Height, original.Size.Width);
+                UIGraphics.BeginImageContextWithOptions(rect.Size, true, 1.0f);
+
+                image.Draw(rect);
+                image = UIGraphics.GetImageFromCurrentImageContext();
+                UIGraphics.EndImageContext();
                 using (var s = System.IO.File.OpenWrite(tempFile))
                 {
                     var iss = image.AsPNG().AsStream();
@@ -67,7 +96,8 @@ namespace NeuroSpeech.UIAtoms.Drawing
             var data = await WebFetchAsync(img);
 
             var s = data as System.IO.Stream;
-            if (s != null) {
+            if (s != null)
+            {
                 return UIImage.LoadFromData(NSData.FromStream(s));
             }
 
@@ -83,5 +113,7 @@ namespace NeuroSpeech.UIAtoms.Drawing
             throw new NotSupportedException();
         }
 
+
     }
+
 }
