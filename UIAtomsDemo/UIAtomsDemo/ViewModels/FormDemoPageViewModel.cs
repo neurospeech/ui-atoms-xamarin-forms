@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace UIAtomsDemo.ViewModels
@@ -15,7 +16,7 @@ namespace UIAtomsDemo.ViewModels
 
 
             //Refresh();
-
+            LoginCommand = new AtomCommand(async()=> await OnLoginAsync());
         }
 
         int i = 1;
@@ -97,7 +98,12 @@ namespace UIAtomsDemo.ViewModels
         #endregion
 
 
+        public ICommand LoginCommand { get; }
 
+        private async Task OnLoginAsync()
+        {
+            await notificationService.NotifyAsync("Logged in Successfully");
+        }
 
     }
 }
