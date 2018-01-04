@@ -8,7 +8,7 @@
 
   <Grid BackgroundColor="Green">
 
-    <ns:AtomForm x:Name="theForm">
+    <ns:AtomForm x:Name="theForm" SubmitCommand="{Binding LoginCommand}">
       <ns:AtomFieldGroup >
       
         <Switch ns:AtomForm.Label="Employee Login" IsToggled="{Binding IsStaffLogin,Mode=TwoWay}"/>
