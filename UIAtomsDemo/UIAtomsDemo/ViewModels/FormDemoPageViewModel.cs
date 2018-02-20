@@ -97,6 +97,16 @@ namespace UIAtomsDemo.ViewModels
         }
         #endregion
 
+        #region Property UserType
+
+        public AtomData<string>[] UserType { get; } = new AtomData<string>[] {
+            new AtomData<string>("Talent","Talent"),
+            new AtomData<string>("Agent","Agent"),
+            new AtomData<string>("Client","Client"),
+            new AtomData<string>("Admin","Admin")
+        };
+
+        #endregion
 
         public ICommand LoginCommand { get; }
 

@@ -201,6 +201,68 @@ namespace NeuroSpeech.UIAtoms.Controls
 
 
 
+
+        #region Property IsVertical
+
+        /// <summary>
+        /// Bindable Property IsVertical
+        /// </summary>
+        public static readonly BindableProperty IsVerticalProperty = BindableProperty.Create(
+          nameof(IsVertical),
+          typeof(bool),
+          typeof(AtomToggleButtonBar),
+          false,
+          BindingMode.OneWay,
+          // validate value delegate
+          // (sender,value) => true
+          null,
+          // property changed, delegate
+          //(sender,oldValue,newValue) => ((AtomToggleButtonBar)sender).OnIsVerticalChanged(oldValue,newValue),
+          null,
+          // property changing delegate
+          // (sender,oldValue,newValue) => {}
+          null,
+          // coerce value delegate 
+          // (sender,value) => value
+          null,
+          // create default value delegate
+          // () => Default(T)
+          null
+        );
+
+        /*
+        /// <summary>
+        /// On IsVertical changed
+        /// </summary>
+        /// <param name="oldValue">Old Value</param>
+        /// <param name="newValue">New Value</param>
+        protected virtual void OnIsVerticalChanged(object oldValue, object newValue)
+        {
+            
+        }*/
+
+
+        /// <summary>
+        /// Property IsVertical
+        /// </summary>
+        public bool IsVertical
+        {
+            get
+            {
+                return (bool)GetValue(IsVerticalProperty);
+            }
+            set
+            {
+                SetValue(IsVerticalProperty, value);
+            }
+        }
+        #endregion
+
+
+
+
+
+
         #region Old
         //    #region Property ItemTemplate
         //    public static readonly BindableProperty ItemTemplateProperty =
