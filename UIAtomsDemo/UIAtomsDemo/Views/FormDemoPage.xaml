@@ -6,7 +6,7 @@
   x:Class="UIAtomsDemo.FormDemoPage"
   Title="Form Demo">
 
-  <Grid BackgroundColor="Green">
+  <Grid BackgroundColor="White">
 
     <ns:AtomForm x:Name="theForm" SubmitCommand="{Binding LoginCommand}">
       <ns:AtomFieldGroup >
@@ -42,7 +42,20 @@
           </ns:AtomTextBox.Effects>
 
         </ns:AtomPasswordBox>
-
+          
+          
+        <ns:AtomToggleButtonBar
+             ns:AtomForm.Label="User Type"
+             IsVertical="False"
+             LabelPath="Label"
+             ItemsSource="{Binding UserType}"/>  
+          
+          <ns:AtomToggleButtonBar
+             ns:AtomForm.Label="User Type"
+             IsVertical="True"
+             LabelPath="Label"
+             ItemsSource="{Binding UserType}"/>  
+          
         <ns:AtomSubmitButton 
           Text="Login"/>
       

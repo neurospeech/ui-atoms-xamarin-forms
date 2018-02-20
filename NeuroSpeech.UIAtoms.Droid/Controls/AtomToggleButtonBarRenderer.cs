@@ -82,6 +82,9 @@ namespace NeuroSpeech.UIAtoms.Droid.Controls
             if (Element.ItemsSource == null)
                 return;
 
+            if (Element.IsVertical)
+                Control.Orientation = Orientation.Vertical;
+
             Func<object, string> getText = x => x.ToString();
             if (Element.LabelPath != null)
             {
@@ -99,8 +102,14 @@ namespace NeuroSpeech.UIAtoms.Droid.Controls
                 button.Text = getText(item);
                 var vh = new ViewHolder<Android.Widget.RadioButton> { Data = item, View = button };
                 views.Add(vh);
-                var lp = new LinearLayout.LayoutParams(0, LayoutParams.WrapContent);
-                lp.Weight = 1;
+                LinearLayout.LayoutParams lp;
+                if (Element.IsVertical)
+                    lp = new LinearLayout.LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent);
+                else
+                {
+                    lp = new LinearLayout.LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent);
+                    lp.Weight = 1;
+                }
                 button.LayoutParameters = lp;
                 Control.AddView(button);
                 button.Checked = item == Element.SelectedItem;
