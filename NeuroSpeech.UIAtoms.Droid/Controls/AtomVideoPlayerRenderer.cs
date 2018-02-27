@@ -70,10 +70,6 @@ namespace NeuroSpeech.UIAtoms.Controls
             if (Element.IsPlaying) {
                 videoView.Start();
             }
-            else
-            {
-                videoView.StopPlayback();        
-            }
             mc.Show(0);
         }
 
@@ -97,19 +93,6 @@ namespace NeuroSpeech.UIAtoms.Controls
                     else {
                         videoView.StopPlayback();
                     }
-                }
-            }
-            if (e.PropertyName == "IsDispose")
-            {
-                if (Element.IsDispose)
-                {
-                    videoView.StopPlayback();
-                    videoView.Visibility = ViewStates.Gone;
-                }
-                else
-                {
-                    videoView.Start();
-                    videoView.Visibility = ViewStates.Visible;
                 }
             }
         }
