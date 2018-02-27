@@ -10,7 +10,7 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
         <ns:AtomVideoPlayer Source="{Binding VideoUrl}" BackgroundColor="Black"
-                            IsDispose="{Binding IsVideoDispose}"
+                            IsVisible="{Binding IsVideoDispose}"
                         IsPlaying="False" 
                         AutoPlay="False"/>
             <ns:AtomButton Command="{Binding NextCommand}"

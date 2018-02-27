@@ -14,7 +14,7 @@ namespace UIAtomsDemo.ViewModels
 
         #region Property IsVideoDispose
 
-        private bool _IsVideoDispose = false;
+        private bool _IsVideoDispose = true;
 
         public bool IsVideoDispose
         {
@@ -53,7 +53,7 @@ namespace UIAtomsDemo.ViewModels
 
         private async Task PlayNextVideos()
         {
-            IsVideoDispose = true;
+            IsVideoDispose = false;
             await appNavigator.PushAsync<SecondMediaPlayer>();
         }
 
@@ -68,7 +68,7 @@ namespace UIAtomsDemo.ViewModels
         {
 
             base.OnAppearing();
-            IsVideoDispose = false;
+            IsVideoDispose = true;
 
         }
 

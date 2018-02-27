@@ -182,62 +182,7 @@ namespace NeuroSpeech.UIAtoms.Controls
         }
         #endregion
 
-        #region Property IsDispose
-
-        /// <summary>
-        /// Bindable Property IsDispose
-        /// </summary>
-        public static readonly BindableProperty IsDisposeProperty = BindableProperty.Create(
-          nameof(IsDispose),
-          typeof(bool),
-          typeof(AtomVideoPlayer),
-          false,
-          BindingMode.OneWay,
-          // validate value delegate
-          // (sender,value) => true
-          null,
-          // property changed, delegate
-          //(sender,oldValue,newValue) => ((AtomVideoPlayer)sender).OnIsDisposeChanged(oldValue,newValue),
-          null,
-          // property changing delegate
-          // (sender,oldValue,newValue) => {}
-          null,
-          // coerce value delegate 
-          // (sender,value) => value
-          null,
-          // create default value delegate
-          // () => Default(T)
-          null
-        );
-
-        /*
-        /// <summary>
-        /// On IsDispose changed
-        /// </summary>
-        /// <param name="oldValue">Old Value</param>
-        /// <param name="newValue">New Value</param>
-        protected virtual void OnIsDisposeChanged(object oldValue, object newValue)
-        {
-            
-        }*/
-
-
-        /// <summary>
-        /// Property IsDispose
-        /// </summary>
-        public bool IsDispose
-        {
-            get
-            {
-                return (bool)GetValue(IsDisposeProperty);
-            }
-            set
-            {
-                SetValue(IsDisposeProperty, value);
-            }
-        }
-        #endregion
-
+        
 
 
 

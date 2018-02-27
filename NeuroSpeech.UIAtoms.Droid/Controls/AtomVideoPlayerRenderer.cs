@@ -77,6 +77,8 @@ namespace NeuroSpeech.UIAtoms.Controls
             mc.Show(0);
         }
 
+        
+
         /// <summary>
         /// 
         /// </summary>
@@ -99,10 +101,8 @@ namespace NeuroSpeech.UIAtoms.Controls
                     }
                 }
             }
-            if (e.PropertyName == "IsDispose")
-            {
-                if (Element.IsDispose)
-                {
+            if (e.PropertyName == nameof(AtomVideoPlayer.IsVisible)) {
+                if (!Element.IsVisible) {
                     videoView.StopPlayback();
                     videoView.Visibility = ViewStates.Gone;
                 }
@@ -112,6 +112,7 @@ namespace NeuroSpeech.UIAtoms.Controls
                     videoView.Visibility = ViewStates.Visible;
                 }
             }
+            
         }
 
         private void ResetVideo()
