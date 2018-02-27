@@ -35,7 +35,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FormDemoPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MediaPlayerPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NavigatorListSampleViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SecondMediaPlayerViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AtomCalendarPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,9 +54,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SecondMediaPlayer.xaml.cs">
-      <DependentUpon>SecondMediaPlayer.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -107,11 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MediaPlayerPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SecondMediaPlayer.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
