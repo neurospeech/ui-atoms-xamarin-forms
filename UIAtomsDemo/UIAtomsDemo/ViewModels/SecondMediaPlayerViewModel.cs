@@ -4,6 +4,7 @@ using System.Text;
 using NeuroSpeech.UIAtoms;
 using NeuroSpeech.UIAtoms.Controls;
 
+
 namespace UIAtomsDemo.ViewModels
 {
     public class SecondMediaPlayerViewModel : AtomViewModel
@@ -21,7 +22,7 @@ namespace UIAtomsDemo.ViewModels
                     //To test portrait mode
                     Url = "https://d2lcywqhfczovm.cloudfront.net/tfs/229654/1529563/hn9y1tvgjvc3/general---profile-overview-home-app.mp4"
 
-                   
+
                 };
             }
         }
