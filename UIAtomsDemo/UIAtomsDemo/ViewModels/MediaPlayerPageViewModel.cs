@@ -3,11 +3,33 @@ using NeuroSpeech.UIAtoms.Controls;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UIAtomsDemo.Views;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace UIAtomsDemo.ViewModels
 {
     public class MediaPlayerPageViewModel : AtomViewModel
     {
+
+        #region Property IsVideoDispose
+
+        private bool _IsVideoDispose = false;
+
+        public bool IsVideoDispose
+        {
+            get
+            {
+                return _IsVideoDispose;
+            }
+            set
+            {
+                SetProperty(ref _IsVideoDispose, value);
+            }
+        }
+
+        #endregion
+
         #region Property VideoUrl
 
         private AtomVideoSource _VideoUrl;
@@ -28,5 +50,27 @@ namespace UIAtomsDemo.ViewModels
         }
 
         #endregion
+
+        private async Task PlayNextVideos()
+        {
+            IsVideoDispose = true;
+            await appNavigator.PushAsync<SecondMediaPlayer>();
+        }
+
+        public ICommand NextCommand { get; }
+
+        public MediaPlayerPageViewModel()
+        {
+            NextCommand = new AtomCommand(async () => await PlayNextVideos());
+        }
+
+        public override void OnAppearing()
+        {
+
+            base.OnAppearing();
+            IsVideoDispose = false;
+
+        }
+
     }
 }
