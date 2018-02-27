@@ -1,11 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ns="clr-namespace:NeuroSpeech.UIAtoms.Controls;assembly=NeuroSpeech.UIAtoms"
              x:Class="UIAtomsDemo.Views.MediaPlayerPage" BackgroundColor="Black">
     <ContentPage.Content>
-        <ns:AtomVideoPlayer Source="{Binding VideoUrl}" BackgroundColor="Black"
-                        IsPlaying="True" 
-                        AutoPlay="True"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <ns:AtomVideoPlayer Source="{Binding VideoUrl}" BackgroundColor="Black"
+                            IsVisible="{Binding IsVideoDispose}"
+                        IsPlaying="False" 
+                        AutoPlay="False"/>
+            <ns:AtomButton Command="{Binding NextCommand}"
+                    Text="Next"
+                    Grid.Row="1"/>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
