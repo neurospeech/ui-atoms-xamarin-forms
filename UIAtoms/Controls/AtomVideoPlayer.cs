@@ -191,8 +191,6 @@ namespace NeuroSpeech.UIAtoms.Controls
 
 
 
-
-
     }
 
     public class AtomVideoSource {

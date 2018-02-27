@@ -3,14 +3,12 @@ using NeuroSpeech.UIAtoms.Controls;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using UIAtomsDemo.Views;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace UIAtomsDemo.ViewModels
 {
     public class MediaPlayerPageViewModel : AtomViewModel
     {
+
 
         #region Property IsVideoDispose
 
@@ -29,6 +27,7 @@ namespace UIAtomsDemo.ViewModels
         }
 
         #endregion
+
 
         #region Property VideoUrl
 
@@ -50,6 +49,7 @@ namespace UIAtomsDemo.ViewModels
         }
 
         #endregion
+
 
         private async Task PlayNextVideos()
         {

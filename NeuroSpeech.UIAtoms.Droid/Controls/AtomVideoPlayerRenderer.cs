@@ -70,10 +70,6 @@ namespace NeuroSpeech.UIAtoms.Controls
             if (Element.IsPlaying) {
                 videoView.Start();
             }
-            else
-            {
-                videoView.StopPlayback();        
-            }
             mc.Show(0);
         }
 
@@ -101,6 +97,7 @@ namespace NeuroSpeech.UIAtoms.Controls
                     }
                 }
             }
+
             if (e.PropertyName == nameof(AtomVideoPlayer.IsVisible)) {
                 if (!Element.IsVisible) {
                     videoView.StopPlayback();
