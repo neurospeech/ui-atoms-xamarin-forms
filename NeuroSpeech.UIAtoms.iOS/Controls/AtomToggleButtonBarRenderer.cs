@@ -42,15 +42,21 @@ namespace NeuroSpeech.UIAtoms.Controls
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (e.PropertyName == "ItemsSource") {
-                Recreate();
+            switch(e.PropertyName)
+            {
+                case nameof(AtomToggleButtonBar.LabelPath):
+                case nameof(AtomToggleButtonBar.Version):
+                case nameof(AtomToggleButtonBar.ItemsSource):
+                    Recreate();
+                    break;
+                case nameof(AtomToggleButtonBar.SelectedItem):
+                    ResetStates();
+                    break;
+
             }
-            if (e.PropertyName == "LabelPath") {
-                Recreate();
-            }
-            if (e.PropertyName == "SelectedItem") {
-                ResetStates();
-            }
+
+           
+
         }
 
         List<Tuple<nint, object>> items = new List<Tuple<nint, object>>();

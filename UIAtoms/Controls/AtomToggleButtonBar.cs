@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Text;
 using Xamarin.Forms;
 
@@ -24,6 +25,65 @@ namespace NeuroSpeech.UIAtoms.Controls
 
             //this.ItemTemplate = new DataTemplate(typeof(Button));
         }
+
+
+
+        #region Property Version
+
+        /// <summary>
+        /// Bindable Property Version
+        /// </summary>
+        public static readonly BindableProperty VersionProperty = BindableProperty.Create(
+          nameof(Version),
+          typeof(int),
+          typeof(AtomToggleButtonBar),
+          0,
+          BindingMode.OneWay,
+          // validate value delegate
+          // (sender,value) => true
+          null,
+          // property changed, delegate
+          //(sender,oldValue,newValue) => ((AtomToggleButtonBar)sender).OnVersionChanged(oldValue,newValue),
+          null,
+          // property changing delegate
+          // (sender,oldValue,newValue) => {}
+          null,
+          // coerce value delegate 
+          // (sender,value) => value
+          null,
+          // create default value delegate
+          // () => Default(T)
+          null
+        );
+
+        /*
+        /// <summary>
+        /// On Version changed
+        /// </summary>
+        /// <param name="oldValue">Old Value</param>
+        /// <param name="newValue">New Value</param>
+        protected virtual void OnVersionChanged(object oldValue, object newValue)
+        {
+            
+        }*/
+
+
+        /// <summary>
+        /// Property Version
+        /// </summary>
+        public int Version
+        {
+            get
+            {
+                return (int)GetValue(VersionProperty);
+            }
+            set
+            {
+                SetValue(VersionProperty, value);
+            }
+        }
+        #endregion
+
 
 
         #region Property ItemsSource
@@ -62,8 +122,28 @@ namespace NeuroSpeech.UIAtoms.Controls
         /// <param name="newValue">New Value</param>
         protected virtual void OnItemsSourceChanged(object oldValue, object newValue)
         {
+            if(ice!=null)
+            {
+                ice.CollectionChanged -= Ice_CollectionChanged;
+            }
             ItemsSourceChanged?.Invoke(this, EventArgs.Empty);
+
+            ice = ItemsSource as INotifyCollectionChanged;
+
+            if (ice != null)
+            {
+                ice.CollectionChanged += Ice_CollectionChanged;
+            }
         }
+
+        private void Ice_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            Version++;
+        }
+
+        private INotifyCollectionChanged ice;
+
+     
 
         public event EventHandler ItemsSourceChanged;
 

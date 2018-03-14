@@ -59,14 +59,20 @@ namespace NeuroSpeech.UIAtoms.Droid.Controls
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName == "ItemsSource")
+
+            switch (e.PropertyName)
             {
-                Recreate();
+                case nameof(AtomToggleButtonBar.LabelPath):
+                case nameof(AtomToggleButtonBar.Version):
+                case nameof(AtomToggleButtonBar.ItemsSource):
+                    Recreate();
+                    break;
+                case nameof(AtomToggleButtonBar.SelectedItem):
+                    ResetStates();
+                    break;
+
             }
-            else if (e.PropertyName == "SelectedItem")
-            {
-                ResetStates();
-            }
+
         }
 
         private List<ViewHolder<Android.Widget.RadioButton>> views = new List<ViewHolder<Android.Widget.RadioButton>>();
