@@ -512,7 +512,7 @@ namespace NeuroSpeech.UIAtoms.Controls
                 Filter = (a,s) => {
                     if (a == null)
                         return false;
-                    var pl = path.Split(',');
+                    var pl = path.Split(new char[] { ',' });
                     Type type = a.GetType();
                     foreach (var p in pl)
                     {

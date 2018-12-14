@@ -16,7 +16,7 @@ namespace NeuroSpeech.UIAtoms.DI
 
         public NavigationQueue(string uri)
         {
-            foreach (var item in uri.Split('/')) {
+            foreach (var item in uri.Split(new char[] { '/' })) {
                 queue.Enqueue(new NavigationItem(item));
             }
         }

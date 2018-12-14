@@ -67,8 +67,8 @@ namespace NeuroSpeech.UIAtoms.DI
 
         private void Parse(string v)
         {
-            foreach(var pair in v.Split('&')) {
-                var kv = pair.Split('=');
+            foreach(var pair in v.Split(new char[] { '&' })) {
+                var kv = pair.Split(new char[] { '=' });
                 var key = kv[0];
                 string value = key;
                 if (kv.Length > 1) {
