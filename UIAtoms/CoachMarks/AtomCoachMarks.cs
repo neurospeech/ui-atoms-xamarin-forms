@@ -247,14 +247,14 @@ namespace NeuroSpeech.UIAtoms.Controls
 
 
 
-        protected async override Task OnAppearingAnimationEnd()
+        protected override void OnAppearingAnimationEnd()
         {
-            await base.OnAppearingAnimationEnd();
+            base.OnAppearingAnimationEnd();
 
             if (tts != null)
                 return;
             tts = DependencyService.Get<TextToSpeechService>(DependencyFetchTarget.NewInstance);
-            await OnTapped();
+            AtomDevice.Instance.RunOnUIThread(() => OnTapped());
         }
 
         protected override void OnDisappearing()
