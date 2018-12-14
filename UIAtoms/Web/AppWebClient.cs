@@ -119,7 +119,7 @@ namespace NeuroSpeech.UIAtoms.Web.Impl
             }
 
             // load cookies..
-            Uri uri = new Uri(fullUri.Split('?')[0]);
+            Uri uri = new Uri(fullUri.Split(new char[] { '?' })[0]);
 
             string currentCookies = GetCookies(uri);
             if (!string.IsNullOrWhiteSpace(currentCookies))
