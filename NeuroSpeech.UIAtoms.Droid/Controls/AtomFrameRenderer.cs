@@ -18,5 +18,9 @@ namespace NeuroSpeech.UIAtoms.Controls
 {
     public class AtomFrameRenderer: Xamarin.Forms.Platform.Android.AppCompat.FrameRenderer
     {
+        public AtomFrameRenderer(Context context): base(context)
+        {
+
+        }
     }
 }
