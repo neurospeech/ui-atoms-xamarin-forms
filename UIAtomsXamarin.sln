@@ -18,6 +18,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7E73F945-B468-4FAB-8858-165B9FFC5AB8}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		UIAtoms.NuGet\Package.nuspec = UIAtoms.NuGet\Package.nuspec
 	EndProjectSection
 EndProject
 Global
@@ -151,5 +152,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {828CB1EC-B2F2-4E5F-B973-CDC3CCA9D25D}
 	EndGlobalSection
 EndGlobal

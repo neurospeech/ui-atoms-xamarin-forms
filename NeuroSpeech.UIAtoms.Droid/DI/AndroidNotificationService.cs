@@ -13,6 +13,7 @@ using NeuroSpeech.UIAtoms.DI;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using System.Threading.Tasks;
+using Plugin.CurrentActivity;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AndroidNotificationService))]
 [assembly: Xamarin.Forms.Dependency(typeof(BusyView))]
@@ -121,7 +122,7 @@ namespace NeuroSpeech.UIAtoms.DI
 
                     if (!window.IsShowing) {
 
-                        var decoreView = ((Activity)Android.App.Application.Context).Window.DecorView;
+                        var decoreView = CrossCurrentActivity.Current.Activity.Window.DecorView;
                         if (decoreView == null)
                             return;
                         try
