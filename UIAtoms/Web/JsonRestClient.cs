@@ -434,11 +434,11 @@ namespace NeuroSpeech.UIAtoms.Web
 
 
 
-        protected string PrepareUrl(string path, object p)
+        protected virtual string PrepareUrl(string path, object p)
         {
             
             string url = 
-                path.StartsWith("https://") || path.StartsWith("http://") 
+                (path.StartsWith("https://") || path.StartsWith("http://")) 
                 ? path
                 : (BaseUrl + path);
 
