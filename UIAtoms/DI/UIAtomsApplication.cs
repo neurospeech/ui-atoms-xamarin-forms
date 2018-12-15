@@ -319,7 +319,7 @@ namespace NeuroSpeech.UIAtoms
         {
             get
             {
-                return Rg.Plugins.Popup.Services.PopupNavigation.PopupStack;
+                return Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack;
             }
         }
 
@@ -381,7 +381,7 @@ namespace NeuroSpeech.UIAtoms
         public async Task<Page> PopModalAsync(bool animated)
         {
             var top = ModalStack.LastOrDefault();
-            await Rg.Plugins.Popup.Services.PopupNavigation.PopAsync(animated);
+            await Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync(animated);
             return top;
             //return inner.PopModalAsync(animated);
         }
@@ -447,7 +447,7 @@ namespace NeuroSpeech.UIAtoms
             var p = page as Rg.Plugins.Popup.Pages.PopupPage;
             if (p != null)
             {
-                return Rg.Plugins.Popup.Services.PopupNavigation.PushAsync(p, animated);
+                return Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(p, animated);
             }
             return inner.PushModalAsync(page, animated);
         }
