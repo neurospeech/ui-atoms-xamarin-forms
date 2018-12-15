@@ -44,7 +44,7 @@ namespace NeuroSpeech.UIAtoms.DI
         /// <param name="location"></param>
         public Task NotifyAsync(string message, ToastGravity location = ToastGravity.Center)
         {
-            var toast = Toast.MakeText(Android.App.Application.Context, message, ToastLength.Long);
+            var toast = Toast.MakeText(CrossCurrentActivity.Current.Activity, message, ToastLength.Long);
             if (location != ToastGravity.Center)
             {
                 toast.SetGravity(GravityFlags.Center, 0, 0);
