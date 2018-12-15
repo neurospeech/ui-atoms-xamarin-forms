@@ -38,7 +38,7 @@ namespace NeuroSpeech.UIAtoms.Controls
         /// <summary>
         /// 
         /// </summary>
-        public AtomImageRenderer()
+        public AtomImageRenderer(Context context) : base(context)
         {
             AutoPackage = false;
 

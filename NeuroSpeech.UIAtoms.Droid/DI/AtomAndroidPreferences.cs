@@ -19,7 +19,7 @@ namespace NeuroSpeech.UIAtoms.DI
     {
 
         private ISharedPreferences GetPreferences() {
-            return Xamarin.Forms.Forms.Context.GetSharedPreferences(Name, FileCreationMode.Private);
+            return Android.App.Application.Context.GetSharedPreferences(Name, FileCreationMode.Private);
         }
 
         private ISharedPreferencesEditor Edit() {

@@ -21,7 +21,7 @@ namespace NeuroSpeech.UIAtoms.Controls
     public class AtomMaskBoxRenderer: FrameRenderer
     {
 
-        public AtomMaskBoxRenderer()
+        public AtomMaskBoxRenderer(Context context) : base(context)
         {
             this.SetClipChildren(true);
             this.SetWillNotDraw(false);

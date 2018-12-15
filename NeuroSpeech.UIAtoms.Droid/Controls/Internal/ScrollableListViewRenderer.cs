@@ -24,6 +24,12 @@ namespace NeuroSpeech.UIAtoms.Controls.Internal
     /// </summary>
     public class ScrollableListViewRenderer: ListViewRenderer
     {
+
+        public ScrollableListViewRenderer(Context context): base(context)
+        {
+
+        }
+
         /// <summary>
         /// 
         /// </summary>

@@ -29,7 +29,7 @@
 //        {
 //            base.OnElementChanged(e);
 
-//            var c = new Android.Widget.ListView(Xamarin.Forms.Forms.Context);
+//            var c = new Android.Widget.ListView(Android.App.Application.Context);
 
 //            source = new AtomItemsControlSource(Element);
 
@@ -162,13 +162,13 @@
 
 //            if (item.IsHeader)
 //            {
-//                var fl = new FrameLayout(Xamarin.Forms.Forms.Context)
+//                var fl = new FrameLayout(Android.App.Application.Context)
 //                {
 //                    LayoutParameters = new ViewGroup.LayoutParams(
 //                        ViewGroup.LayoutParams.MatchParent,
 //                        ViewGroup.LayoutParams.WrapContent)
 //                };
-//                var label = new TextView(Xamarin.Forms.Forms.Context)
+//                var label = new TextView(Android.App.Application.Context)
 //                {
 //                    LayoutParameters = new FrameLayout.LayoutParams(
 //                        ViewGroup.LayoutParams.MatchParent,

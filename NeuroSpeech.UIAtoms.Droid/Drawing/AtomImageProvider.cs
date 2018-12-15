@@ -80,7 +80,7 @@ namespace NeuroSpeech.UIAtoms.Drawing
                 {
                     // load from resources....
 
-                    return await Xamarin.Forms.Forms.Context.Resources.GetBitmapAsync(img.OriginalString);
+                    return await Android.App.Application.Context.Resources.GetBitmapAsync(img.OriginalString);
                 }
 
                 return await BitmapFactory.DecodeFileAsync(img.OriginalString);

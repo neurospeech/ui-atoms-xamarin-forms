@@ -31,6 +31,11 @@ namespace NeuroSpeech.UIAtoms.Droid.Controls
     public class AtomToggleButtonBarRenderer : ViewRenderer<AtomToggleButtonBar, LinearLayout>
     {
 
+        public AtomToggleButtonBarRenderer(Context context): base(context)
+        {
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -42,7 +47,7 @@ namespace NeuroSpeech.UIAtoms.Droid.Controls
             if (Element == null)
                 return;
 
-            LinearLayout layout = new LinearLayout(Xamarin.Forms.Forms.Context);
+            LinearLayout layout = new LinearLayout(Android.App.Application.Context);
             layout.LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
 
             SetNativeControl(layout);
@@ -104,7 +109,7 @@ namespace NeuroSpeech.UIAtoms.Droid.Controls
 
             foreach (var item in Element.ItemsSource)
             {
-                var button = new Android.Widget.RadioButton(Xamarin.Forms.Forms.Context);
+                var button = new Android.Widget.RadioButton(Android.App.Application.Context);
                 button.Text = getText(item);
                 var vh = new ViewHolder<Android.Widget.RadioButton> { Data = item, View = button };
                 views.Add(vh);

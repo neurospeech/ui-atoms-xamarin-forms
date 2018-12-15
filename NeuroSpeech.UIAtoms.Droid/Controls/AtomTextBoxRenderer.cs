@@ -25,6 +25,11 @@ namespace NeuroSpeech.UIAtoms.Controls
     public class AtomTextBoxRenderer: EntryRenderer
     {
 
+        public AtomTextBoxRenderer(Context context): base(context)
+        {
+
+        }
+
         /// <summary>
         /// 
         /// </summary>

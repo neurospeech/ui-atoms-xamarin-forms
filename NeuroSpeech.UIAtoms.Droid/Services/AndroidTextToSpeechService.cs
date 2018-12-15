@@ -56,7 +56,7 @@ namespace NeuroSpeech.UIAtoms.Services
 
         public AndroidTextToSpeechService()
         {
-            this.tts = new TextToSpeech(Xamarin.Forms.Forms.Context, new Listener {
+            this.tts = new TextToSpeech(Android.App.Application.Context, new Listener {
                 Init = (status) => {
                     var r = tts.SetLanguage(Java.Util.Locale.English);
                     if (r == LanguageAvailableResult.MissingData || r == LanguageAvailableResult.NotSupported) {

@@ -28,7 +28,7 @@ namespace NeuroSpeech.UIAtoms.Controls
         /// <summary>
         /// 
         /// </summary>
-        public AtomVideoPlayerRenderer()
+        public AtomVideoPlayerRenderer(Context context) : base(context)
         {
 
         }
@@ -46,7 +46,7 @@ namespace NeuroSpeech.UIAtoms.Controls
             if (Element == null)
                 return;
 
-            videoView = new VideoView(Xamarin.Forms.Forms.Context);
+            videoView = new VideoView(Android.App.Application.Context);
             var vlp = new Android.Widget.RelativeLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
             vlp.AddRule(LayoutRules.CenterInParent);
             //vlp.AddRule(LayoutRules.AlignParentLeft);
@@ -55,13 +55,13 @@ namespace NeuroSpeech.UIAtoms.Controls
             videoView.LayoutParameters = vlp;
 
             //vlp.AddRule(LayoutRules.fill);
-            var mc = new MediaController(Xamarin.Forms.Forms.Context);
+            var mc = new MediaController(Android.App.Application.Context);
             videoView.SetMediaController(mc);
 
 
 
 
-            var ctrl = new Android.Widget.RelativeLayout(Xamarin.Forms.Forms.Context);
+            var ctrl = new Android.Widget.RelativeLayout(Android.App.Application.Context);
             ctrl.AddView(videoView);
             SetNativeControl(ctrl);
 

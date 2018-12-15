@@ -63,7 +63,7 @@ namespace UIAtomsDemo.ViewModels
             await DependencyService.Get<INotificationService>().NotifyAsync($"Country {country.Label} tapped");
         }
 
-        public override async Task InitAsync()
+        public override Task InitAsync()
         {
             //Items.Replace(await JsonService.Instance.Countries());
 
@@ -93,6 +93,8 @@ namespace UIAtomsDemo.ViewModels
                     Value = "UK"
                 }
             });
+
+            return Task.CompletedTask;
         }
 
     }

@@ -33,7 +33,7 @@
 //            if (Element == null)
 //                return;
 
-//            var control = new CheckBox(Xamarin.Forms.Forms.Context);
+//            var control = new CheckBox(Android.App.Application.Context);
 //            control.Text = Element.Label;
 //            control.CheckedChange += Control_CheckedChange;
 //            SetNativeControl(control);

@@ -43,7 +43,7 @@ namespace NeuroSpeech.UIAtoms.DI
         /// <param name="location"></param>
         public Task NotifyAsync(string message, ToastGravity location = ToastGravity.Center)
         {
-            var toast = Toast.MakeText(Xamarin.Forms.Forms.Context, message, ToastLength.Long);
+            var toast = Toast.MakeText(Android.App.Application.Context, message, ToastLength.Long);
             if (location != ToastGravity.Center)
             {
                 toast.SetGravity(GravityFlags.Center, 0, 0);
@@ -94,7 +94,7 @@ namespace NeuroSpeech.UIAtoms.DI
 
         private void CreateProgressWindow()
         {
-            Android.Widget.ProgressBar progress = new Android.Widget.ProgressBar(Xamarin.Forms.Forms.Context);
+            Android.Widget.ProgressBar progress = new Android.Widget.ProgressBar(Android.App.Application.Context);
 
 
             window = new PopupWindow(progress, 60, 60);
@@ -121,7 +121,7 @@ namespace NeuroSpeech.UIAtoms.DI
 
                     if (!window.IsShowing) {
 
-                        var decoreView = ((Activity)Forms.Context).Window.DecorView;
+                        var decoreView = ((Activity)Android.App.Application.Context).Window.DecorView;
                         if (decoreView == null)
                             return;
                         try

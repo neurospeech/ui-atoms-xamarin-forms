@@ -11,7 +11,7 @@ namespace UIAtomsDemo.ViewModels
     {
         #region Property VideoUrl
 
-        private AtomVideoSource _VideoUrl;
+        // private AtomVideoSource _VideoUrl;
 
         public AtomVideoSource VideoUrl
         {

@@ -22,6 +22,12 @@ namespace NeuroSpeech.UIAtoms.Controls
     /// </summary>
     public class AtomZoomViewRenderer: ViewRenderer
     {
+
+        public AtomZoomViewRenderer(Context context): base(context)
+        {
+
+        }
+
         private bool _panStarted = false;
         private bool _pinchStarted = false;
         private double _originDistance;
