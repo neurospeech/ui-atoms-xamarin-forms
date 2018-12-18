@@ -47,7 +47,7 @@ namespace NeuroSpeech.UIAtoms.Droid.Controls
             if (Element == null)
                 return;
 
-            LinearLayout layout = new LinearLayout(Android.App.Application.Context);
+            LinearLayout layout = new LinearLayout(this.Context);
             layout.LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
 
             SetNativeControl(layout);
@@ -109,7 +109,7 @@ namespace NeuroSpeech.UIAtoms.Droid.Controls
 
             foreach (var item in Element.ItemsSource)
             {
-                var button = new Android.Widget.RadioButton(Android.App.Application.Context);
+                var button = new Android.Widget.RadioButton(this.Context);
                 button.Text = getText(item);
                 var vh = new ViewHolder<Android.Widget.RadioButton> { Data = item, View = button };
                 views.Add(vh);
