@@ -94,7 +94,7 @@ namespace NeuroSpeech.UIAtoms.Controls
         {
             if (path != null)
             {
-                canvas.ClipPath(path, Region.Op.Difference);
+                canvas.ClipPath(path);
                 canvas.DrawRect(0, 0, Width+1, Height+1, paint);
             }
         }
