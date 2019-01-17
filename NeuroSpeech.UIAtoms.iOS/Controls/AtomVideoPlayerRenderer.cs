@@ -108,20 +108,27 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         private async Task SetSource(AtomVideoSource source)
         {
-            asset = await LoadAsset(source);
+            try
+            {
+                asset = await LoadAsset(source);
 
-            playerItem = new AVPlayerItem(asset);
-            player = new AVPlayer(playerItem);
+                playerItem = new AVPlayerItem(asset);
+                player = new AVPlayer(playerItem);
 
-            playerController = new AVPlayerViewController();
-            Control.AddSubview(playerController.View);
-            playerController.Player = player;
-            playerController.View.Frame = Control.Frame;
+                playerController = new AVPlayerViewController();
+                Control.AddSubview(playerController.View);
+                playerController.Player = player;
+                playerController.View.Frame = Control.Frame;
 
-            player.Seek(CMTime.FromSeconds(1,1000));
+                player.Seek(CMTime.FromSeconds(1, 1000));
 
-            if (Element.IsPlaying) {
-                player.Play();
+                if (Element.IsPlaying)
+                {
+                    player.Play();
+                }
+            }
+            catch (Exception ex) {
+                AtomDevice.Instance.Log(ex);
             }
         }
 
