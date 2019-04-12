@@ -230,7 +230,38 @@ namespace NeuroSpeech.UIAtoms
                 MessagingCenter.Unsubscribe<T>(this, message);
             }));
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="message"></param>
+        /// <param name="action"></param>
+        /// <param name="onUnsubscribe"></param>
+        protected void OnBackgroundMessageWithArgs<T, TArgs>(string message, Action<T,TArgs> action, Action onUnsubscribe = null)
+            where T : class
+        {
+            if (onDisposing == null)
+            {
+                onDisposing = new List<Action>();
+            }
 
+            MessagingCenter.Subscribe<T,TArgs>(this, message, (s,a) => {
+                Device.BeginInvokeOnMainThread(() => {
+                    try
+                    {
+                        action(s, a);
+                    }
+                    catch (Exception ex)
+                    {
+                        UIAtomsApplication.Instance.LogException?.Invoke(ex);
+                    }
+                });
+            });
+
+            onDisposing.Add(onUnsubscribe ?? (() => {
+                MessagingCenter.Unsubscribe<T>(this, message);
+            }));
+        }
         /// <summary>
         /// 
         /// </summary>
