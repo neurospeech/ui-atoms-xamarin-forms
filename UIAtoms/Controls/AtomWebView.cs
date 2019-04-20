@@ -31,7 +31,7 @@ namespace NeuroSpeech.UIAtoms.Controls
             if (n == null)
                 return;
 
-            if (e.Url == lastUrl) {
+            if (lastUrl != null && e.Url == lastUrl) {
                 e.Cancel = lastResult;
                 return;
             }
