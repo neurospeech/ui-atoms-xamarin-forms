@@ -44,7 +44,7 @@ namespace NeuroSpeech.UIAtoms.Controls
             this.ItemTemplate = new DataTemplate(typeof(AtomLabelTemplate));
 
             this.Padding = new Thickness(5);
-            this.OutlineColor = Color.Accent;
+            this.BorderColor = Color.Accent;
 
             OnSelectedItemChanged(null, null);
         }

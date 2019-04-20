@@ -802,7 +802,7 @@ namespace NeuroSpeech.UIAtoms.Controls
                     SizeRequest sizeRequest;
                     if (!layoutCache.TryGetValue(child, out sizeRequest))
                     {
-                        layoutCache[child] = sizeRequest = child.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+                        layoutCache[child] = sizeRequest = child.Measure(double.PositiveInfinity, double.PositiveInfinity);
                     }
 
                     var paddedWidth = sizeRequest.Request.Width + Spacing;

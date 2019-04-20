@@ -10,7 +10,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         public AtomFrame()
         {
-            OutlineColor = Color.Accent;
+            BorderColor = Color.Accent;
         }
 
     }

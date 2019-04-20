@@ -18,7 +18,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         public AtomMaskBox()
         {
-            this.OutlineColor = Color.Transparent;
+            this.BorderColor = Color.Transparent;
             this.BackgroundColor = Color.FromRgba(0, 0, 0, 0.5);
             this.InputTransparent = true;
             this.HasShadow = false;

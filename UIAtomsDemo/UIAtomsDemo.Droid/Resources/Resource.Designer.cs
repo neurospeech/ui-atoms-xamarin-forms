@@ -38,8 +38,6 @@ namespace UIAtomsDemo.Droid
 			global::NeuroSpeech.UIAtoms.Resource.Animation.abc_slide_out_top = global::UIAtomsDemo.Droid.Resource.Animation.abc_slide_out_top;
 			global::NeuroSpeech.UIAtoms.Resource.Animation.design_bottom_sheet_slide_in = global::UIAtomsDemo.Droid.Resource.Animation.design_bottom_sheet_slide_in;
 			global::NeuroSpeech.UIAtoms.Resource.Animation.design_bottom_sheet_slide_out = global::UIAtomsDemo.Droid.Resource.Animation.design_bottom_sheet_slide_out;
-			global::NeuroSpeech.UIAtoms.Resource.Animation.design_fab_in = global::UIAtomsDemo.Droid.Resource.Animation.design_fab_in;
-			global::NeuroSpeech.UIAtoms.Resource.Animation.design_fab_out = global::UIAtomsDemo.Droid.Resource.Animation.design_fab_out;
 			global::NeuroSpeech.UIAtoms.Resource.Animation.design_snackbar_in = global::UIAtomsDemo.Droid.Resource.Animation.design_snackbar_in;
 			global::NeuroSpeech.UIAtoms.Resource.Animation.design_snackbar_out = global::UIAtomsDemo.Droid.Resource.Animation.design_snackbar_out;
 			global::NeuroSpeech.UIAtoms.Resource.Animator.design_appbar_state_list_animator = global::UIAtomsDemo.Droid.Resource.Animator.design_appbar_state_list_animator;
@@ -412,7 +410,6 @@ namespace UIAtomsDemo.Droid
 			global::NeuroSpeech.UIAtoms.Resource.Color.abc_tint_edittext = global::UIAtomsDemo.Droid.Resource.Color.abc_tint_edittext;
 			global::NeuroSpeech.UIAtoms.Resource.Color.abc_tint_seek_thumb = global::UIAtomsDemo.Droid.Resource.Color.abc_tint_seek_thumb;
 			global::NeuroSpeech.UIAtoms.Resource.Color.abc_tint_spinner = global::UIAtomsDemo.Droid.Resource.Color.abc_tint_spinner;
-			global::NeuroSpeech.UIAtoms.Resource.Color.abc_tint_switch_thumb = global::UIAtomsDemo.Droid.Resource.Color.abc_tint_switch_thumb;
 			global::NeuroSpeech.UIAtoms.Resource.Color.abc_tint_switch_track = global::UIAtomsDemo.Droid.Resource.Color.abc_tint_switch_track;
 			global::NeuroSpeech.UIAtoms.Resource.Color.accent_material_dark = global::UIAtomsDemo.Droid.Resource.Color.accent_material_dark;
 			global::NeuroSpeech.UIAtoms.Resource.Color.accent_material_light = global::UIAtomsDemo.Droid.Resource.Color.accent_material_light;
@@ -442,8 +439,6 @@ namespace UIAtomsDemo.Droid
 			global::NeuroSpeech.UIAtoms.Resource.Color.design_fab_stroke_top_inner_color = global::UIAtomsDemo.Droid.Resource.Color.design_fab_stroke_top_inner_color;
 			global::NeuroSpeech.UIAtoms.Resource.Color.design_fab_stroke_top_outer_color = global::UIAtomsDemo.Droid.Resource.Color.design_fab_stroke_top_outer_color;
 			global::NeuroSpeech.UIAtoms.Resource.Color.design_snackbar_background_color = global::UIAtomsDemo.Droid.Resource.Color.design_snackbar_background_color;
-			global::NeuroSpeech.UIAtoms.Resource.Color.design_textinput_error_color_dark = global::UIAtomsDemo.Droid.Resource.Color.design_textinput_error_color_dark;
-			global::NeuroSpeech.UIAtoms.Resource.Color.design_textinput_error_color_light = global::UIAtomsDemo.Droid.Resource.Color.design_textinput_error_color_light;
 			global::NeuroSpeech.UIAtoms.Resource.Color.design_tint_password_toggle = global::UIAtomsDemo.Droid.Resource.Color.design_tint_password_toggle;
 			global::NeuroSpeech.UIAtoms.Resource.Color.dim_foreground_disabled_material_dark = global::UIAtomsDemo.Droid.Resource.Color.dim_foreground_disabled_material_dark;
 			global::NeuroSpeech.UIAtoms.Resource.Color.dim_foreground_disabled_material_light = global::UIAtomsDemo.Droid.Resource.Color.dim_foreground_disabled_material_light;
@@ -1107,7 +1102,6 @@ namespace UIAtomsDemo.Droid
 			global::NeuroSpeech.UIAtoms.Resource.Interpolator.mr_linear_out_slow_in = global::UIAtomsDemo.Droid.Resource.Interpolator.mr_linear_out_slow_in;
 			global::NeuroSpeech.UIAtoms.Resource.Layout.abc_action_bar_title_item = global::UIAtomsDemo.Droid.Resource.Layout.abc_action_bar_title_item;
 			global::NeuroSpeech.UIAtoms.Resource.Layout.abc_action_bar_up_container = global::UIAtomsDemo.Droid.Resource.Layout.abc_action_bar_up_container;
-			global::NeuroSpeech.UIAtoms.Resource.Layout.abc_action_bar_view_list_nav_layout = global::UIAtomsDemo.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout;
 			global::NeuroSpeech.UIAtoms.Resource.Layout.abc_action_menu_item_layout = global::UIAtomsDemo.Droid.Resource.Layout.abc_action_menu_item_layout;
 			global::NeuroSpeech.UIAtoms.Resource.Layout.abc_action_menu_layout = global::UIAtomsDemo.Droid.Resource.Layout.abc_action_menu_layout;
 			global::NeuroSpeech.UIAtoms.Resource.Layout.abc_action_mode_bar = global::UIAtomsDemo.Droid.Resource.Layout.abc_action_mode_bar;
@@ -1174,8 +1168,6 @@ namespace UIAtomsDemo.Droid
 			global::NeuroSpeech.UIAtoms.Resource.String.ApplicationName = global::UIAtomsDemo.Droid.Resource.String.ApplicationName;
 			global::NeuroSpeech.UIAtoms.Resource.String.Hello = global::UIAtomsDemo.Droid.Resource.String.Hello;
 			global::NeuroSpeech.UIAtoms.Resource.String.abc_action_bar_home_description = global::UIAtomsDemo.Droid.Resource.String.abc_action_bar_home_description;
-			global::NeuroSpeech.UIAtoms.Resource.String.abc_action_bar_home_description_format = global::UIAtomsDemo.Droid.Resource.String.abc_action_bar_home_description_format;
-			global::NeuroSpeech.UIAtoms.Resource.String.abc_action_bar_home_subtitle_description_format = global::UIAtomsDemo.Droid.Resource.String.abc_action_bar_home_subtitle_description_format;
 			global::NeuroSpeech.UIAtoms.Resource.String.abc_action_bar_up_description = global::UIAtomsDemo.Droid.Resource.String.abc_action_bar_up_description;
 			global::NeuroSpeech.UIAtoms.Resource.String.abc_action_menu_overflow_description = global::UIAtomsDemo.Droid.Resource.String.abc_action_menu_overflow_description;
 			global::NeuroSpeech.UIAtoms.Resource.String.abc_action_mode_done = global::UIAtomsDemo.Droid.Resource.String.abc_action_mode_done;
@@ -1446,16 +1438,6 @@ namespace UIAtomsDemo.Droid
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Medium = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Menu = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Notification = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Notification;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Notification_Info = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Info;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Notification_Info_Media = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Info_Media;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Notification_Line2 = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Line2;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Notification_Line2_Media = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Line2_Media;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Notification_Media = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Media;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Notification_Time = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Time;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Notification_Time_Media = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Time_Media;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Notification_Title = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Title;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Notification_Title_Media = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Title_Media;
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_AppCompat_Small = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_AppCompat_Small;
@@ -1493,11 +1475,6 @@ namespace UIAtomsDemo.Droid
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_MediaRouter_PrimaryText = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_MediaRouter_PrimaryText;
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_MediaRouter_SecondaryText = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_MediaRouter_SecondaryText;
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_MediaRouter_Title = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_MediaRouter_Title;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_StatusBar_EventContent = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_StatusBar_EventContent;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
-			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
 			global::NeuroSpeech.UIAtoms.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::UIAtomsDemo.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
@@ -1594,8 +1571,6 @@ namespace UIAtomsDemo.Droid
 			global::NeuroSpeech.UIAtoms.Resource.Style.Widget_AppCompat_ListView = global::UIAtomsDemo.Droid.Resource.Style.Widget_AppCompat_ListView;
 			global::NeuroSpeech.UIAtoms.Resource.Style.Widget_AppCompat_ListView_DropDown = global::UIAtomsDemo.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
 			global::NeuroSpeech.UIAtoms.Resource.Style.Widget_AppCompat_ListView_Menu = global::UIAtomsDemo.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
-			global::NeuroSpeech.UIAtoms.Resource.Style.Widget_AppCompat_NotificationActionContainer = global::UIAtomsDemo.Droid.Resource.Style.Widget_AppCompat_NotificationActionContainer;
-			global::NeuroSpeech.UIAtoms.Resource.Style.Widget_AppCompat_NotificationActionText = global::UIAtomsDemo.Droid.Resource.Style.Widget_AppCompat_NotificationActionText;
 			global::NeuroSpeech.UIAtoms.Resource.Style.Widget_AppCompat_PopupMenu = global::UIAtomsDemo.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
 			global::NeuroSpeech.UIAtoms.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::UIAtomsDemo.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
 			global::NeuroSpeech.UIAtoms.Resource.Style.Widget_AppCompat_PopupWindow = global::UIAtomsDemo.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
@@ -1943,7 +1918,6 @@ namespace UIAtomsDemo.Droid
 			global::NeuroSpeech.UIAtoms.Resource.Styleable.MediaRouteButton = global::UIAtomsDemo.Droid.Resource.Styleable.MediaRouteButton;
 			global::NeuroSpeech.UIAtoms.Resource.Styleable.MediaRouteButton_android_minHeight = global::UIAtomsDemo.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
 			global::NeuroSpeech.UIAtoms.Resource.Styleable.MediaRouteButton_android_minWidth = global::UIAtomsDemo.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
-			global::NeuroSpeech.UIAtoms.Resource.Styleable.MediaRouteButton_buttonTint = global::UIAtomsDemo.Droid.Resource.Styleable.MediaRouteButton_buttonTint;
 			global::NeuroSpeech.UIAtoms.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::UIAtomsDemo.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
 			global::NeuroSpeech.UIAtoms.Resource.Styleable.MenuGroup = global::UIAtomsDemo.Droid.Resource.Styleable.MenuGroup;
 			global::NeuroSpeech.UIAtoms.Resource.Styleable.MenuGroup_android_checkableBehavior = global::UIAtomsDemo.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
@@ -2147,7 +2121,6 @@ namespace UIAtomsDemo.Droid
 			global::NeuroSpeech.UIAtoms.Resource.Styleable.ViewStubCompat_android_id = global::UIAtomsDemo.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::NeuroSpeech.UIAtoms.Resource.Styleable.ViewStubCompat_android_inflatedId = global::UIAtomsDemo.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::NeuroSpeech.UIAtoms.Resource.Styleable.ViewStubCompat_android_layout = global::UIAtomsDemo.Droid.Resource.Styleable.ViewStubCompat_android_layout;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::UIAtomsDemo.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation
