@@ -1567,8 +1567,14 @@ namespace NeuroSpeech.UIAtoms.Controls
                     return;
                 if (Value == null)
                     return;
-                var values = Value.ToString().Split(ValueSeparator.ToCharArray()).Select(x => x.Trim()).ToList();
-
+                List<string> values = null;
+                if (this.AllowMultipleSelection)
+                {
+                    values = Value.ToString().Split(ValueSeparator.ToCharArray()).Select(x => x.Trim()).ToList();
+                } else
+                {
+                    values = new List<string>() { Value.ToString() };
+                }
 
                 System.Collections.IList convertedValues = null;
 
