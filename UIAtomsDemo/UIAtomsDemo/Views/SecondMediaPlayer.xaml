@@ -4,7 +4,8 @@
              xmlns:ns="clr-namespace:NeuroSpeech.UIAtoms.Controls;assembly=NeuroSpeech.UIAtoms"
              x:Class="UIAtomsDemo.Views.SecondMediaPlayer">
     <ContentPage.Content>
-        <ns:AtomVideoPlayer Source="{Binding VideoUrl}" BackgroundColor="Black"
+        <ns:AtomVideoPlayer 
+                        Source="{Binding VideoUrl}"
                         IsPlaying="True" 
                         AutoPlay="True"/>
     </ContentPage.Content>

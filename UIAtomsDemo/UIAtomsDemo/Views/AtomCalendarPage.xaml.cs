@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 
 namespace UIAtomsDemo.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    // [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AtomCalendarPage : ContentPage
 	{
 		public AtomCalendarPage ()
