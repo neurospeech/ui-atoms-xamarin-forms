@@ -28,3 +28,7 @@ UIAtomsDemo/UIAtomsDemo.iOS/bin
 /AtomStockImagesLib/bin/Debug
 *.user
 /.vs/
+/Rg.Plugins.Popup/bin/Debug/netstandard1.0
+/Rg.Plugins.Popup/obj
+/Rg.Plugins.Popup.Droid/bin/Debug
+/Rg.Plugins.Popup.Droid/obj/Debug
