@@ -38,13 +38,15 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-    <BundleAssemblies>False</BundleAssemblies>
+    <BundleAssemblies>false</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <Debugger>Xamarin</Debugger>
-    <AotAssemblies>False</AotAssemblies>
-    <EnableLLVM>False</EnableLLVM>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
     <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
     <EnableProguard>False</EnableProguard>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <AndroidSupportedAbis />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -221,6 +223,14 @@
     <ProjectReference Include="..\..\NeuroSpeech.UIAtoms.Droid\NeuroSpeech.UIAtoms.Droid.csproj">
       <Project>{26e6dba9-7241-47e2-9865-74bea053910c}</Project>
       <Name>NeuroSpeech.UIAtoms.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Rg.Plugins.Popup.Droid\Rg.Plugins.Popup.Droid.csproj">
+      <Project>{23bbe23f-5599-41e7-aabb-ae419ee74813}</Project>
+      <Name>Rg.Plugins.Popup.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Rg.Plugins.Popup\Rg.Plugins.Popup.csproj">
+      <Project>{19afc7ad-9890-4fde-aa40-071bd21f03cb}</Project>
+      <Name>Rg.Plugins.Popup</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
