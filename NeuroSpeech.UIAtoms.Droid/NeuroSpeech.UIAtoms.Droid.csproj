@@ -219,6 +219,10 @@
       <Project>{23bbe23f-5599-41e7-aabb-ae419ee74813}</Project>
       <Name>Rg.Plugins.Popup.Droid</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Rg.Plugins.Popup\Rg.Plugins.Popup.csproj">
+      <Project>{19afc7ad-9890-4fde-aa40-071bd21f03cb}</Project>
+      <Name>Rg.Plugins.Popup</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\UIAtoms\UIAtoms.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
