@@ -24,7 +24,6 @@
         <group targetFramework="monoandroid10">
           <dependency id="Newtonsoft.Json" version="9.0.1"/>
           <dependency id="Xamarin.Forms" version="2.3.4.231" />
-          <dependency id="Rg.Plugins.Popup" version="1.0.4"/>          
         </group>
       <group targetFramework="xamarinios10">
         <dependency id="Newtonsoft.Json" version="9.0.1"/>
@@ -36,5 +35,6 @@
   <files>
     <file src="..\NeuroSpeech.UIAtoms.iOS\bin\Debug\NeuroSpeech.UIAtoms.*" target="lib\Xamarin.iOS10" />
     <file src="..\NeuroSpeech.UIAtoms.Droid\bin\Debug\NeuroSpeech.UIAtoms.*" target="lib\MonoAndroid10" />
+    <file src="..\Rg.Plugins.Popup.Droid\bin\Debug\Rg.Plugins.Popup.*" target="lib\MonoAndroid10" />
   </files>
 </package>
