@@ -126,6 +126,66 @@ namespace NeuroSpeech.UIAtoms.Controls
         }
         #endregion
 
+
+
+        #region Property IsPlay
+
+        /// <summary>
+        /// Bindable Property IsPlay
+        /// </summary>
+        public static readonly BindableProperty IsPlayProperty = BindableProperty.Create(
+          nameof(IsPlay),
+          typeof(bool),
+          typeof(AtomVideoPlayer),
+          true,
+          BindingMode.TwoWay,
+          // validate value delegate
+          // (sender,value) => true
+          null,
+          // property changed, delegate
+          //(sender,oldValue,newValue) => ((AtomVideoPlayer)sender).OnIsPlayChanged(oldValue,newValue),
+          null,
+          // property changing delegate
+          // (sender,oldValue,newValue) => {}
+          null,
+          // coerce value delegate 
+          // (sender,value) => value
+          null,
+          // create default value delegate
+          // () => Default(T)
+          null
+        );
+
+        /*
+        /// <summary>
+        /// On IsPlay changed
+        /// </summary>
+        /// <param name="oldValue">Old Value</param>
+        /// <param name="newValue">New Value</param>
+        protected virtual void OnIsPlayChanged(object oldValue, object newValue)
+        {
+            
+        }*/
+
+
+        /// <summary>
+        /// Property IsPlay
+        /// </summary>
+        public bool IsPlay
+        {
+            get
+            {
+                return (bool)GetValue(IsPlayProperty);
+            }
+            set
+            {
+                SetValue(IsPlayProperty, value);
+            }
+        }
+        #endregion
+
+
+
         #region Property IsPlaying
 
         /// <summary>
@@ -136,7 +196,7 @@ namespace NeuroSpeech.UIAtoms.Controls
           typeof(bool),
           typeof(AtomVideoPlayer),
           false,
-          BindingMode.OneWay,
+          BindingMode.TwoWay,
           // validate value delegate
           // (sender,value) => true
           null,

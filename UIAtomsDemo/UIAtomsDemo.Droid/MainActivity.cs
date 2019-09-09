@@ -10,7 +10,11 @@ using Xamarin.Forms.Platform.Android;
 
 namespace UIAtomsDemo.Droid
 {
-	[Activity (Label = "UIAtomsDemo", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "UIAtomsDemo",
+        MainLauncher = true,
+        Theme = "@style/AppTheme",
+        Icon = "@drawable/icon",
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : FormsAppCompatActivity
     {
 		protected override void OnCreate (Bundle bundle)
