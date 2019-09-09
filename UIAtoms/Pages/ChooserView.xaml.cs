@@ -52,6 +52,7 @@ namespace NeuroSpeech.UIAtoms.Pages
 
             Chooser.TapCommand?.Execute(selectedItems);
 
+            Chooser = null;
             if (Popup) {
                 await DependencyService.Get<INavigation>().PopModalAsync();
             } else
@@ -62,7 +63,7 @@ namespace NeuroSpeech.UIAtoms.Pages
 
         public bool Popup { get; set; }
 
-        public AtomChooser Chooser { get; }
+        public AtomChooser Chooser { get; private set; }
         public AtomCommand DoneCommand { get; private set; }
 
         private AtomListView listView = null;
