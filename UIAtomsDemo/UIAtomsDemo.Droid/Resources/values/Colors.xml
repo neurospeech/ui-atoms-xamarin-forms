@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorPrimary">#ED1C24</color>
+
+  <color name="colorPrimaryDark">#FF6D00</color>
+  <color name="colorAccent">#FF6D00</color>
+
+  <color name="colorPrimaryDark">#d41118</color>
+  <color name="colorAccent">#1EAAF1</color>
+
+  <color name="errorColor">#DD2C00</color>
+  <color name="windowBackground">#ffffff</color>
+  <color name="window_background">#808080</color>
+  <color name="textColorPrimary">#ffffff</color>
+  <color name="primary_text_material_light">#ffffff</color>
+  <color name="popup_textcolor">#000000</color>
+  <color name="colorControlNormal">#c0c0c0</color>
+  <color name="colorControlActivated">#1EAAF1</color>
+  <color name="colorControlHighlight">#1EAAF1</color>
+
+</resources>

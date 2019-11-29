@@ -51,6 +51,26 @@ namespace UIAtomsDemo.ViewModels
 
         #endregion
 
+
+        #region Property IsPlay
+
+        private bool _IsPlay = true;
+
+        public bool IsPlay
+        {
+            get
+            {
+                return _IsPlay;
+            }
+            set
+            {
+                SetProperty(ref _IsPlay, value);
+            }
+        }
+
+        #endregion
+
+
         private async Task PlayNextVideos()
         {
             IsVideoDispose = false;
@@ -59,9 +79,18 @@ namespace UIAtomsDemo.ViewModels
 
         public ICommand NextCommand { get; }
 
+        private Task PlayVideos()
+        {
+            IsPlay = !IsPlay;
+            return Task.CompletedTask;
+        }
+
+        public ICommand PlayCommand { get; }
+
         public MediaPlayerPageViewModel()
         {
             NextCommand = new AtomCommand(async () => await PlayNextVideos());
+            PlayCommand = new AtomCommand(async () => await PlayVideos());
         }
 
         public override void OnAppearing()

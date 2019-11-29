@@ -93,18 +93,15 @@ namespace NeuroSpeech.UIAtoms.Controls
             {
                 ResetVideo();
             }
-            if (e.PropertyName == "IsPlaying")
+            if (e.PropertyName == "IsPlay")
             {
-                if (videoView.IsPlaying != Element.IsPlaying)
+                if (Element.IsPlay)
                 {
-                    if (Element.IsPlaying)
-                    {
-                        videoView.Start();
-                    }
-                    else
-                    {
-                        videoView.StopPlayback();
-                    }
+                    videoView.Start();
+                }
+                else
+                {
+                    videoView.StopPlayback();
                 }
             }
             if (e.PropertyName == nameof(AtomVideoPlayer.IsVisible))
