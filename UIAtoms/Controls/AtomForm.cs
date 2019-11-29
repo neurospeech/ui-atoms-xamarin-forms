@@ -1001,20 +1001,22 @@ namespace NeuroSpeech.UIAtoms.Controls
         internal IEnumerable AllFields(bool flat = false)
         {
             System.Diagnostics.Debug.WriteLine("Enumerating Form Fields");
+            var list = new ArrayList();
             if (flat)
             {
                 foreach (var item in Groups)
                 {
-                    yield return item;
+                    list.Add(item);
                 }
             }
             else
             {
                 foreach (object item in Groups.GroupBy(x => AtomForm.GetCategory(x)))
                 {
-                    yield return item;
+                    list.Add(item);
                 }
             }
+            return list;
         }
 
         internal IEnumerable<View> Groups {
