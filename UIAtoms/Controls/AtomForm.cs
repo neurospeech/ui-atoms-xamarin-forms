@@ -531,7 +531,9 @@ namespace NeuroSpeech.UIAtoms.Controls
             this.ValidateCommand = new AtomCommand(OnValidateCommand);
 
             Content = listView = new AtomFormItemsControl(this);
-            UpdateItems();
+            // UpdateItems();
+
+            this.listView.VerticalScrollBarVisibility = ScrollBarVisibility.Always;
         }
 
 
@@ -563,15 +565,27 @@ namespace NeuroSpeech.UIAtoms.Controls
         internal void UpdateItems() {
             UIAtomsApplication.Instance.TriggerOnce(() =>
             {
-                if (Items.Count == 1 && HideSingleGroup)
+                try
                 {
-                    listView.IsGroupingEnabled = false;
-                    listView.ItemsSource = (Items as FieldCollection<AtomFieldGroup>).AllFields(true);
+                    // listView.ItemsSource = null;
+                    if (Items.Count == 1 && HideSingleGroup)
+                    {
+                        //if (listView.IsGroupingEnabled)
+                        //    listView.IsGroupingEnabled = false;
+                        listView.IsGrouped = false;
+                        listView.ItemsSource = (Items as FieldCollection<AtomFieldGroup>).AllFields(true);
+                    }
+                    else
+                    {
+                        //if(!listView.IsGroupingEnabled)
+                        //    listView.IsGroupingEnabled = true;
+                        listView.IsGrouped = true;
+                        listView.ItemsSource = (Items as FieldCollection<AtomFieldGroup>).AllFields();
+                    }
+                    // listView.Refresh();
                 }
-                else
-                {
-                    listView.IsGroupingEnabled = true;
-                    listView.ItemsSource = (Items as FieldCollection<AtomFieldGroup>).AllFields();
+                catch (Exception ex) {
+                    System.Diagnostics.Debug.WriteLine(ex);
                 }
             });
         }
@@ -1016,6 +1030,10 @@ namespace NeuroSpeech.UIAtoms.Controls
                     list.Add(item);
                 }
             }
+            //foreach (var item in list)
+            //{
+            //    System.Diagnostics.Debug.WriteLine(item.GetType().FullName);
+            //}
             return list;
         }
 
@@ -1050,10 +1068,34 @@ namespace NeuroSpeech.UIAtoms.Controls
 	}
 #else
 
+    public class FormTemplateSelector : DataTemplateSelector
+    {
+
+        internal AtomForm Form;
+
+        private Dictionary<Object, DataTemplate> cache = new Dictionary<object, DataTemplate>();
+
+        protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
+        {
+            if(cache.TryGetValue(item, out var dt))
+            {
+                return dt;
+            }
+            dt = new DataTemplate(() => {
+                var afg = Form.FieldStyle.CreateContent() as AtomFieldGrid;
+                afg.Form = this.Form;
+                afg.BindView(item as View);
+                return afg;
+            });
+            cache[item] = dt;
+            return dt;
+        }
+    }
+
     /// <summary>
     /// 
     /// </summary>
-    public class AtomFormItemsControl : ListView
+    public class AtomFormItemsControl : CollectionView
     {
         private readonly AtomForm Form;
 
@@ -1062,20 +1104,40 @@ namespace NeuroSpeech.UIAtoms.Controls
         /// </summary>
         /// <param name="form"></param>
         public AtomFormItemsControl(AtomForm form)
-            :base(ListViewCachingStrategy.RetainElement)
         {
 
             this.Form = form;
 
-            this.HasUnevenRows = true;
+            //this.HasUnevenRows = true;
 
             this.Margin = 5;
 
             this.BackgroundColor = Color.Transparent;
-            this.GroupDisplayBinding = new Binding { Path = "Key" };
-            this.SeparatorVisibility = SeparatorVisibility.None;
-            this.IsGroupingEnabled = true;
-            this.ItemTemplate = new DataTemplate(typeof(AtomFieldItemTemplate));
+            //this.GroupDisplayBinding = new Binding { Path = "Key" };
+            //this.SeparatorVisibility = SeparatorVisibility.None;
+            //this.IsGroupingEnabled = true;
+            // this.ItemTemplate = new DataTemplate(typeof(AtomFieldGroup));
+            this.ItemSizingStrategy = ItemSizingStrategy.MeasureAllItems;
+            this.ItemTemplate = new FormTemplateSelector { Form = this.Form };
+            //this.ItemTemplate = new DataTemplate(() =>
+            //{
+            //    // Grid grid = new Grid();
+            //    var afg = Form.FieldStyle.CreateContent() as AtomFieldGrid;
+            //    if (afg == null)
+            //    {
+            //        throw new InvalidOperationException("FieldStyle must contain root element of type AtomFieldGrid");
+            //    }
+            //    afg.Form = this.Form;
+            //    return afg;
+            //});
+
+
+
+            this.IsGrouped = true;
+            var layout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical);
+            
+            this.ItemsLayout = layout;
+
 
             //this.GroupHeaderTemplate = new DataTemplate(()=> {
             //    Label l = new Label();
@@ -1099,74 +1161,79 @@ namespace NeuroSpeech.UIAtoms.Controls
 
             //this.ItemTemplate = new DataTemplate(typeof(ViewCell));
 
-            this.ItemSelected += (s, e) =>
-            {
-                this.SelectedItem = null;
-            };
+            //this.ItemSelected += (s, e) =>
+            //{
+            //    this.SelectedItem = null;
+            //};
 
 
             
             
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="content"></param>
-        protected override void UnhookContent(Cell content)
+        internal void Refresh()
         {
-            base.UnhookContent(content);
-
-            ViewCell vc = content as AtomFieldItemTemplate;
-            if (vc != null && vc.View != null )
-            {
-                var afg = vc.View as AtomFieldGrid;
-                if (afg != null) {
-                    afg.UnbindView();
-                }
-            }
+            this.InvalidateMeasure();
         }
 
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="content"></param>
+        //protected override void UnhookContent(Cell content)
+        //{
+        //    base.UnhookContent(content);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="content"></param>
-        /// <param name="index"></param>
-        protected override void SetupContent(Cell content, int index)
-        {
-            base.SetupContent(content, index);
+        //    ViewCell vc = content as AtomFieldItemTemplate;
+        //    if (vc != null && vc.View != null )
+        //    {
+        //        var afg = vc.View as AtomFieldGrid;
+        //        if (afg != null) {
+        //            afg.UnbindView();
+        //        }
+        //    }
+        //}
 
-            ViewCell vc = content as AtomFieldItemTemplate;
-            if (vc != null)
-            {
-                View v = content.BindingContext as View;
-                if (v != null)
-                {
 
-                    // create content...
-                    if (vc.View == null)
-                    {
-                        // inherit...
-                        v.SetBinding(View.BindingContextProperty, new Binding {
-                            Path = "BindingContext",
-                            Source = this.Form
-                        });
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="content"></param>
+        ///// <param name="index"></param>
+        //protected override void SetupContent(Cell content, int index)
+        //{
+        //    base.SetupContent(content, index);
 
-                        var afg = Form.FieldStyle.CreateContent() as AtomFieldGrid;
-                        if (afg == null) {
-                            throw new InvalidOperationException("FieldStyle must contain root element of type AtomFieldGrid");
-                        }
+        //    ViewCell vc = content as AtomFieldItemTemplate;
+        //    if (vc != null)
+        //    {
+        //        View v = content.BindingContext as View;
+        //        if (v != null)
+        //        {
 
-                        afg.BindView(v);
+        //            // create content...
+        //            if (vc.View == null)
+        //            {
+        //                // inherit...
+        //                v.SetBinding(View.BindingContextProperty, new Binding {
+        //                    Path = "BindingContext",
+        //                    Source = this.Form
+        //                });
 
-                        vc.View = afg;
+        //                var afg = Form.FieldStyle.CreateContent() as AtomFieldGrid;
+        //                if (afg == null) {
+        //                    throw new InvalidOperationException("FieldStyle must contain root element of type AtomFieldGrid");
+        //                }
 
-                    }
-                }
-            }
+        //                afg.BindView(v);
 
-        }
+        //                vc.View = afg;
+
+        //            }
+        //        }
+        //    }
+
+        //}
 
 
     }

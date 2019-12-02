@@ -736,12 +736,31 @@ namespace NeuroSpeech.UIAtoms.Controls
             this.BindingContext = this;
         }
 
+        internal AtomForm Form;
+
+        //protected override void OnBindingContextChanged()
+        //{
+        //    base.OnBindingContextChanged();
+
+        //    if (this.BindingContext == this)
+        //    {
+        //        return;
+        //    }
+        //    if (this.Content != null)
+        //        return;
+        //    this.BindView(this.BindingContext as View);
+        //}
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="view"></param>
         public void BindView(View view) {
-
+            view.SetBinding(BindingContextProperty, new Binding
+            {
+                Path = "BindingContext",
+                Source = this.Form
+            }) ;
             this.Content = view;
             view.PropertyChanged += View_PropertyChanged;
             Label = AtomForm.GetLabel(view);
@@ -749,6 +768,7 @@ namespace NeuroSpeech.UIAtoms.Controls
             this.Error = AtomForm.GetError(view);
             this.Description = AtomForm.GetDescription(view);
             this.IsRequired = AtomForm.GetIsRequired(view);
+            this.InvalidateLayout();
             this.UpdateCell();
         }
 
@@ -797,13 +817,13 @@ namespace NeuroSpeech.UIAtoms.Controls
         {
             UIAtomsApplication.Instance.TriggerOnce(() =>
             {
-                ViewCell cell = Content.GetParentOfType<ViewCell>();
+                var cell = Content.GetParentOfType<AtomFieldGrid>();
                 if (cell != null)
                 {
                     this.InvalidateMeasure();
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        cell.ForceUpdateSize();
+                        cell.InvalidateLayout();
                     });
                 }
             });
@@ -840,9 +860,9 @@ namespace NeuroSpeech.UIAtoms.Controls
             RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
             var label = new Label();
-            label.SetBinding(Xamarin.Forms.Label.TextProperty, new Binding("Label"));
-            label.SetBinding(Xamarin.Forms.Label.TextColorProperty, new Binding("LabelColor"));
-            label.SetBinding(Xamarin.Forms.Label.IsVisibleProperty, new Binding("Label", converter: StringToVisibilityConverter.Instance));
+            label.SetBinding(Xamarin.Forms.Label.TextProperty, new Binding("Label") { Source = this });
+            label.SetBinding(Xamarin.Forms.Label.TextColorProperty, new Binding("LabelColor") { Source = this });
+            label.SetBinding(Xamarin.Forms.Label.IsVisibleProperty, new Binding("Label", converter: StringToVisibilityConverter.Instance) { Source = this });
             label.FontSize = 11;
             
 
@@ -850,7 +870,7 @@ namespace NeuroSpeech.UIAtoms.Controls
             required.Text = "*";
             required.TextColor = Color.Red;
             required.FontSize = 11;
-            required.SetBinding(Xamarin.Forms.Label.IsVisibleProperty, new Binding("IsRequired"));
+            required.SetBinding(Xamarin.Forms.Label.IsVisibleProperty, new Binding("IsRequired") { Source = this });
 
             Children.Add(label);
             Children.Add(required);
@@ -904,10 +924,10 @@ namespace NeuroSpeech.UIAtoms.Controls
             //});
 
             var error = new Label();
-            error.SetBinding(Xamarin.Forms.Label.TextProperty,new Binding("Error"));
-            error.SetBinding(Xamarin.Forms.Label.TextColorProperty, new Binding("ErrorColor"));
-            error.SetBinding(Xamarin.Forms.Label.IsVisibleProperty, new Binding("Error", converter: StringToVisibilityConverter.Instance));
-            error.SetBinding(Xamarin.Forms.Label.BackgroundColorProperty, new Binding("ErrorBackgroundColor"));
+            error.SetBinding(Xamarin.Forms.Label.TextProperty,new Binding("Error") { Source = this });
+            error.SetBinding(Xamarin.Forms.Label.TextColorProperty, new Binding("ErrorColor") { Source = this });
+            error.SetBinding(Xamarin.Forms.Label.IsVisibleProperty, new Binding("Error", converter: StringToVisibilityConverter.Instance) { Source = this });
+            error.SetBinding(Xamarin.Forms.Label.BackgroundColorProperty, new Binding("ErrorBackgroundColor") { Source = this });
             error.HorizontalOptions = LayoutOptions.Fill;
             error.HorizontalTextAlignment = TextAlignment.Start;
             /*var errorFrame = new Frame();
@@ -931,8 +951,8 @@ namespace NeuroSpeech.UIAtoms.Controls
             //this.AddRowItem(warningFrame, GridLength.Auto);
 
             var description = new Label();
-            description.SetBinding(Xamarin.Forms.Label.FormattedTextProperty,new Binding("Description"));
-            description.SetBinding(Xamarin.Forms.Label.IsVisibleProperty, new Binding("Description", converter: StringToVisibilityConverter.Instance));
+            description.SetBinding(Xamarin.Forms.Label.FormattedTextProperty,new Binding("Description") { Source = this });
+            description.SetBinding(Xamarin.Forms.Label.IsVisibleProperty, new Binding("Description", converter: StringToVisibilityConverter.Instance) { Source = this });
             //this.AddRowItem(description, GridLength.Auto);
 
             SetColumnSpan(description, 3);

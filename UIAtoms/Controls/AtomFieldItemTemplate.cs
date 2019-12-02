@@ -17,7 +17,7 @@ namespace NeuroSpeech.UIAtoms.Controls
     /// <summary>
     /// 
     /// </summary>
-    public class AtomFieldItemTemplate : ViewCell {
+    public class AtomFieldItemTemplate : Grid {
 
 
     }

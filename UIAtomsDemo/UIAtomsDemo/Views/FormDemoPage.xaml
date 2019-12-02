@@ -50,12 +50,6 @@
              LabelPath="Label"
              ItemsSource="{Binding UserType}"/>  
           
-          <ns:AtomToggleButtonBar
-             ns:AtomForm.Label="User Type"
-             IsVertical="True"
-             LabelPath="Label"
-             ItemsSource="{Binding UserType}"/>  
-          
         <ns:AtomSubmitButton 
           Text="Login"/>
       
