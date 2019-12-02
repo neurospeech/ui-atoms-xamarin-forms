@@ -5,9 +5,6 @@
   <color name="colorPrimaryDark">#FF6D00</color>
   <color name="colorAccent">#FF6D00</color>
 
-  <color name="colorPrimaryDark">#d41118</color>
-  <color name="colorAccent">#1EAAF1</color>
-
   <color name="errorColor">#DD2C00</color>
   <color name="windowBackground">#ffffff</color>
   <color name="window_background">#808080</color>
