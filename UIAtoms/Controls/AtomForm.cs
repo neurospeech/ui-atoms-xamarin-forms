@@ -1073,22 +1073,14 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         internal AtomForm Form;
 
-        private Dictionary<Object, DataTemplate> cache = new Dictionary<object, DataTemplate>();
-
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            if(cache.TryGetValue(item, out var dt))
-            {
-                return dt;
-            }
-            dt = new DataTemplate(() => {
+            return new DataTemplate(() => { 
                 var afg = Form.FieldStyle.CreateContent() as AtomFieldGrid;
                 afg.Form = this.Form;
                 afg.BindView(item as View);
                 return afg;
             });
-            cache[item] = dt;
-            return dt;
         }
     }
 
