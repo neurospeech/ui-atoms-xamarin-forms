@@ -572,14 +572,16 @@ namespace NeuroSpeech.UIAtoms.Controls
                     {
                         //if (listView.IsGroupingEnabled)
                         //    listView.IsGroupingEnabled = false;
-                        listView.IsGrouped = false;
+                        if (listView.IsGrouped)
+                            listView.IsGrouped = false;
                         listView.ItemsSource = (Items as FieldCollection<AtomFieldGroup>).AllFields(true);
                     }
                     else
                     {
                         //if(!listView.IsGroupingEnabled)
                         //    listView.IsGroupingEnabled = true;
-                        listView.IsGrouped = true;
+                        if (!listView.IsGrouped)
+                            listView.IsGrouped = true;
                         listView.ItemsSource = (Items as FieldCollection<AtomFieldGroup>).AllFields();
                     }
                     // listView.Refresh();
