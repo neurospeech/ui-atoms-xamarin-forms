@@ -768,7 +768,7 @@ namespace NeuroSpeech.UIAtoms.Controls
             this.Description = AtomForm.GetDescription(view);
             this.IsRequired = AtomForm.GetIsRequired(view);
             this.SetBinding(IsVisibleProperty, new Binding { Path = "IsVisible", Source = view });
-            this.UpdateCell();
+            this.InvalidateMeasure();
         }
 
         /// <summary>
