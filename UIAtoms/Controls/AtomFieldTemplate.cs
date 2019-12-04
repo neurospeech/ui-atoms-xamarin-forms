@@ -768,7 +768,7 @@ namespace NeuroSpeech.UIAtoms.Controls
             this.Description = AtomForm.GetDescription(view);
             this.IsRequired = AtomForm.GetIsRequired(view);
             this.SetBinding(IsVisibleProperty, new Binding { Path = "IsVisible", Source = view });
-            this.InvalidateMeasure();
+            this.UpdateCell();
         }
 
         /// <summary>
@@ -815,15 +815,15 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         private void UpdateCell()
         {
+            this.ForceLayout();
             //UIAtomsApplication.Instance.TriggerOnce(() =>
             //{
-            //    var cell = Content.GetParentOfType<AtomFieldGrid>();
+            //    var cell = Content.GetParentOfType<CollectionView>();
             //    if (cell != null)
             //    {
-            //        this.InvalidateMeasure();
             //        Device.BeginInvokeOnMainThread(() =>
             //        {
-            //            cell.InvalidateLayout();
+            //            cell.ForceLayout();
             //        });
             //    }
             //});
