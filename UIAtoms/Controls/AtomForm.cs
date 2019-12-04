@@ -584,10 +584,11 @@ namespace NeuroSpeech.UIAtoms.Controls
                     }
                     // listView.Refresh();
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     System.Diagnostics.Debug.WriteLine(ex);
                 }
-            });
+            }, TimeSpan.FromMilliseconds(500));
         }
 
         /// <summary>
@@ -1015,26 +1016,28 @@ namespace NeuroSpeech.UIAtoms.Controls
         internal IEnumerable AllFields(bool flat = false)
         {
             System.Diagnostics.Debug.WriteLine("Enumerating Form Fields");
-            var list = new ArrayList();
+            // var list = new ArrayList();
             if (flat)
             {
                 foreach (var item in Groups)
                 {
-                    list.Add(item);
+                    // list.Add(item);
+                    yield return item;
                 }
             }
             else
             {
                 foreach (object item in Groups.GroupBy(x => AtomForm.GetCategory(x)))
                 {
-                    list.Add(item);
+                    // list.Add(item);
+                    yield return item;
                 }
             }
             //foreach (var item in list)
             //{
             //    System.Diagnostics.Debug.WriteLine(item.GetType().FullName);
             //}
-            return list;
+            // return list;
         }
 
         internal IEnumerable<View> Groups {
@@ -1068,22 +1071,6 @@ namespace NeuroSpeech.UIAtoms.Controls
 	}
 #else
 
-    public class FormTemplateSelector : DataTemplateSelector
-    {
-
-        internal AtomForm Form;
-
-        protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
-        {
-            return new DataTemplate(() => { 
-                var afg = Form.FieldStyle.CreateContent() as AtomFieldGrid;
-                afg.Form = this.Form;
-                afg.BindView(item as View);
-                return afg;
-            });
-        }
-    }
-
     /// <summary>
     /// 
     /// </summary>
@@ -1103,25 +1090,24 @@ namespace NeuroSpeech.UIAtoms.Controls
             //this.HasUnevenRows = true;
 
             this.Margin = 5;
-
+            this.ItemsUpdatingScrollMode = ItemsUpdatingScrollMode.KeepScrollOffset;
             this.BackgroundColor = Color.Transparent;
             //this.GroupDisplayBinding = new Binding { Path = "Key" };
             //this.SeparatorVisibility = SeparatorVisibility.None;
             //this.IsGroupingEnabled = true;
             // this.ItemTemplate = new DataTemplate(typeof(AtomFieldGroup));
             this.ItemSizingStrategy = ItemSizingStrategy.MeasureAllItems;
-            this.ItemTemplate = new FormTemplateSelector { Form = this.Form };
-            //this.ItemTemplate = new DataTemplate(() =>
-            //{
-            //    // Grid grid = new Grid();
-            //    var afg = Form.FieldStyle.CreateContent() as AtomFieldGrid;
-            //    if (afg == null)
-            //    {
-            //        throw new InvalidOperationException("FieldStyle must contain root element of type AtomFieldGrid");
-            //    }
-            //    afg.Form = this.Form;
-            //    return afg;
-            //});
+            this.ItemTemplate = new DataTemplate(() =>
+            {
+                // Grid grid = new Grid();
+                var afg = Form.FieldStyle.CreateContent() as AtomFieldGrid;
+                if (afg == null)
+                {
+                    throw new InvalidOperationException("FieldStyle must contain root element of type AtomFieldGrid");
+                }
+                afg.Form = this.Form;
+                return afg;
+            });
 
 
 
@@ -1161,11 +1147,6 @@ namespace NeuroSpeech.UIAtoms.Controls
 
             
             
-        }
-
-        internal void Refresh()
-        {
-            this.InvalidateMeasure();
         }
 
         ///// <summary>

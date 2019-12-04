@@ -733,23 +733,17 @@ namespace NeuroSpeech.UIAtoms.Controls
         /// </summary>
         public AtomFieldGrid()
         {
-            this.BindingContext = this;
+            // this.BindingContext = this;
         }
 
         internal AtomForm Form;
 
-        //protected override void OnBindingContextChanged()
-        //{
-        //    base.OnBindingContextChanged();
-
-        //    if (this.BindingContext == this)
-        //    {
-        //        return;
-        //    }
-        //    if (this.Content != null)
-        //        return;
-        //    this.BindView(this.BindingContext as View);
-        //}
+        protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();
+            this.UnbindView();
+            this.BindView(this.BindingContext as View);
+        }
 
         /// <summary>
         /// 
@@ -815,18 +809,18 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         private void UpdateCell()
         {
-            UIAtomsApplication.Instance.TriggerOnce(() =>
-            {
-                var cell = Content.GetParentOfType<AtomFieldGrid>();
-                if (cell != null)
-                {
-                    this.InvalidateMeasure();
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        cell.InvalidateLayout();
-                    });
-                }
-            });
+            //UIAtomsApplication.Instance.TriggerOnce(() =>
+            //{
+            //    var cell = Content.GetParentOfType<AtomFieldGrid>();
+            //    if (cell != null)
+            //    {
+            //        this.InvalidateMeasure();
+            //        Device.BeginInvokeOnMainThread(() =>
+            //        {
+            //            cell.InvalidateLayout();
+            //        });
+            //    }
+            //});
 
         }
     }
