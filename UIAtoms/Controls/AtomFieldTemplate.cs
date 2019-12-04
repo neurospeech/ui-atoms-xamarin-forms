@@ -741,6 +741,11 @@ namespace NeuroSpeech.UIAtoms.Controls
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
+            View view = this.BindingContext as View;
+            if (view == this.Content)
+            {
+                return;
+            }
             this.UnbindView();
             this.BindView(this.BindingContext as View);
         }
