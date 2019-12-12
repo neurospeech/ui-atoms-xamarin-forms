@@ -4,7 +4,7 @@
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
+      <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
     </ItemGroup>
     <ItemGroup>
       <None Remove="readme.txt" />
