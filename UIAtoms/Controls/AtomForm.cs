@@ -1080,6 +1080,12 @@ namespace NeuroSpeech.UIAtoms.Controls
     {
         private readonly AtomForm Form;
 
+        protected override void OnScrollToRequested(ScrollToRequestEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("OnScroll To Requested");
+            base.OnScrollToRequested(e);
+        }
+
         /// <summary>
         /// 
         /// </summary>

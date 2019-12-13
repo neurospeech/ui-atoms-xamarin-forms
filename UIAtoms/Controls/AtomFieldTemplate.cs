@@ -757,7 +757,7 @@ namespace NeuroSpeech.UIAtoms.Controls
                 return;
             }
             this.BatchBegin();
-            this.UnbindView();
+            // this.UnbindView();
             this.BindView(this.BindingContext as View);
             this.BatchCommit();
         }
