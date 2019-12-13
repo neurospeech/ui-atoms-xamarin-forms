@@ -327,6 +327,16 @@ namespace NeuroSpeech.UIAtoms.Controls
         #endregion
 
 
+        protected override bool ShouldInvalidateOnChildAdded(View child)
+        {
+            return true;
+        }
+
+        protected override bool ShouldInvalidateOnChildRemoved(View child)
+        {
+            return true;
+        }
+
 
     }
 
@@ -746,8 +756,10 @@ namespace NeuroSpeech.UIAtoms.Controls
             {
                 return;
             }
+            this.BatchBegin();
             this.UnbindView();
             this.BindView(this.BindingContext as View);
+            this.BatchCommit();
         }
 
         /// <summary>
@@ -815,7 +827,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         private void UpdateCell()
         {
-            this.ForceLayout();
+            // this.ForceLayout();
             //UIAtomsApplication.Instance.TriggerOnce(() =>
             //{
             //    var cell = Content.GetParentOfType<CollectionView>();
