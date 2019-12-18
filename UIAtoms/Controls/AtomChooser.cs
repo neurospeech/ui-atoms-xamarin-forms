@@ -714,7 +714,7 @@ namespace NeuroSpeech.UIAtoms.Controls
                 inc.CollectionChanged += ItemCollectionChanged;
             }
             //UpdateLabel();
-            ItemCollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            ItemCollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));            
         }
 
         
@@ -1645,11 +1645,13 @@ namespace NeuroSpeech.UIAtoms.Controls
             finally
             {
                 UpdateLabel();
+                this.ForceLayout();
             }
         }
 
         private void UpdateLabel()
         {
+
 
             object value = Value;
 
