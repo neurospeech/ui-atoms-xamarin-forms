@@ -1645,7 +1645,12 @@ namespace NeuroSpeech.UIAtoms.Controls
             finally
             {
                 UpdateLabel();
-                this.ForceLayout();
+                AtomDevice.Instance.TriggerOnce(() => {
+                    this.ForceLayout();
+                    this.InvalidateLayout();
+                    this.InvalidateMeasure();
+                    return Task.CompletedTask;
+                });                
             }
         }
 
