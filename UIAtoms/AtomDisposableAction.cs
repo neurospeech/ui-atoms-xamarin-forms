@@ -16,7 +16,7 @@ namespace NeuroSpeech.UIAtoms
         /// 
         /// </summary>
         /// <param name="disposableAction"></param>
-        public AtomDisposableAction(Action disposableAction)
+        public AtomDisposableAction(Action disposableAction = null)
         {
             this.disposableAction = disposableAction;
         }
@@ -26,7 +26,7 @@ namespace NeuroSpeech.UIAtoms
         /// </summary>
         public void Dispose()
         {
-            disposableAction();
+            disposableAction?.Invoke();
         }
     }
 

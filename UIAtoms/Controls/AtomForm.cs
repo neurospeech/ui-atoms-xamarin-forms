@@ -534,7 +534,7 @@ namespace NeuroSpeech.UIAtoms.Controls
             // UpdateItems();
 
             this.listView.VerticalScrollBarVisibility = ScrollBarVisibility.Always;
-        }
+        }        
 
 
         /// <summary>

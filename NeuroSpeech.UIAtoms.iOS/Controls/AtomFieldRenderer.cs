@@ -7,22 +7,15 @@ using Xamarin.Forms.Platform;
 using NeuroSpeech.UIAtoms.Controls;
 using UIKit;
 
-[assembly: ExportCell(typeof(AtomFieldItemTemplate),typeof(AtomFieldRenderer))]
 
 namespace NeuroSpeech.UIAtoms.Controls
 {
-    public class AtomFieldRenderer : ViewCellRenderer
+    public class AtomFieldRenderer
     {
 
 
-        public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
+        public static IDisposable BindKeyboardActions(Xamarin.Forms.View content)
         {
-            var r = base.GetCell(item, reusableCell, tv);
-
-
-			var viewCell = (ViewCell)item;
-
-			var content = viewCell?.BindingContext as Xamarin.Forms.View;
 
             if (content != null && !(content is Editor)) {
 
@@ -65,11 +58,15 @@ namespace NeuroSpeech.UIAtoms.Controls
 
                         return false;
                     };
+
+                    new AtomDisposableAction(() => {
+                        textField.ShouldReturn = null;
+                    });
                 }
 
             }
 
-            return r;
+            return new AtomDisposableAction();
         }
 
     }

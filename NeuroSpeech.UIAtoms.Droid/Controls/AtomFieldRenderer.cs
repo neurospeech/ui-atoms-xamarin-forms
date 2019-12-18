@@ -13,15 +13,14 @@ using Xamarin.Forms;
 using NeuroSpeech.UIAtoms.Controls;
 using Xamarin.Forms.Platform.Android;
 using Android.Views.InputMethods;
-
-[assembly: ExportCell(typeof(AtomFieldItemTemplate), typeof(AtomFieldRenderer))]
+using static Android.Widget.TextView;
 
 namespace NeuroSpeech.UIAtoms.Controls
 {
     /// <summary>
     /// 
     /// </summary>
-    public class AtomFieldRenderer : ViewCellRenderer
+    public class AtomFieldRenderer
     {
 
         /// <summary>
@@ -32,17 +31,8 @@ namespace NeuroSpeech.UIAtoms.Controls
         /// <param name="parent"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        protected override Android.Views.View GetCellCore(Cell item, Android.Views.View convertView, ViewGroup parent, Context context)
+        public static IDisposable BindKeyboardActions(Xamarin.Forms.View content)
         {
-            var r = base.GetCellCore(item, convertView, parent, context);
-
-
-            
-
-            var viewCell = (ViewCell)item;
-
-            var content = viewCell.BindingContext as Xamarin.Forms.View;
-
             if ( content != null && !(content is Editor))
             {
 
@@ -55,7 +45,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
                     textField.ImeOptions = next is AtomSubmitButton ? ImeAction.Go : ImeAction.Next;
 
-                    textField.EditorAction += (s, e) => {
+                    EventHandler<EditorActionEventArgs> editorAction = (s, e) => {
 
 
                         if (e.ActionId == ImeAction.Next
@@ -89,14 +79,20 @@ namespace NeuroSpeech.UIAtoms.Controls
                         }
                     };
 
+                    textField.EditorAction += editorAction;
+
+                    return new AtomDisposableAction(() => {
+                        textField.EditorAction -= editorAction;
+                    });
+
                 }
 
             }
 
+            return new AtomDisposableAction(() => {
+            
+            });
 
-
-
-            return r;
         }
 
         private static void HideKeyboard(EditText textField)

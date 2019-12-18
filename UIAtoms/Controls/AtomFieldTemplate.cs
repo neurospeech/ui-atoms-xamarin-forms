@@ -748,6 +748,8 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         internal AtomForm Form;
 
+        private WeakReference<IDisposable> lastDisposable;
+
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
@@ -756,6 +758,12 @@ namespace NeuroSpeech.UIAtoms.Controls
             {
                 return;
             }
+
+            if (lastDisposable.TryGetTarget(out var d))
+            {
+                d?.Dispose();
+            }
+
             this.BatchBegin();
             // this.UnbindView();
             this.BindView(this.BindingContext as View);
@@ -780,6 +788,7 @@ namespace NeuroSpeech.UIAtoms.Controls
             this.Description = AtomForm.GetDescription(view);
             this.IsRequired = AtomForm.GetIsRequired(view);
             this.SetBinding(IsVisibleProperty, new Binding { Path = "IsVisible", Source = view });
+            this.lastDisposable.SetTarget(AtomFieldRenderer.BindKeyboardActions(view));
             this.UpdateCell();
         }
 
@@ -819,6 +828,7 @@ namespace NeuroSpeech.UIAtoms.Controls
                     this.IsRequired = AtomForm.GetIsRequired(Content);
                     UpdateCell();
                     break;
+                case nameof(IsVisible):
                 case nameof(Content):
                     UpdateCell();
                     break;
@@ -827,7 +837,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         private void UpdateCell()
         {
-            // this.ForceLayout();
+            this.ForceLayout();
             //UIAtomsApplication.Instance.TriggerOnce(() =>
             //{
             //    var cell = Content.GetParentOfType<CollectionView>();
