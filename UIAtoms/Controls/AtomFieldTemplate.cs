@@ -837,6 +837,8 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         private void UpdateCell()
         {
+            this.InvalidateLayout();
+            this.InvalidateMeasure();
             this.ForceLayout();
             //UIAtomsApplication.Instance.TriggerOnce(() =>
             //{
