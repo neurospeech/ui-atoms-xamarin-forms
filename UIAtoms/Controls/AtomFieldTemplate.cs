@@ -748,7 +748,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         internal AtomForm Form;
 
-        private WeakReference<IDisposable> lastDisposable;
+        private WeakReference<IDisposable> lastDisposable = new WeakReference<IDisposable>(null);
 
         protected override void OnBindingContextChanged()
         {
