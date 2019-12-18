@@ -1530,7 +1530,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         private void UpdateCellSize()
         {
-            ViewCell cell = this.GetParentOfType<ViewCell>();
+            var cell = this.GetParentOfType<AtomFieldGrid>();
             if (cell != null)
             {
                 UIAtomsApplication.Instance.TriggerOnce(() =>

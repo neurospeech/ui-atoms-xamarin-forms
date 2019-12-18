@@ -851,6 +851,10 @@ namespace NeuroSpeech.UIAtoms.Controls
             //});
 
         }
+        public void ForceUpdateSize()
+        {
+            this.UpdateCell();
+        }
     }
 
     /// <summary>
