@@ -1085,6 +1085,10 @@ namespace NeuroSpeech.UIAtoms.Controls
             System.Diagnostics.Debug.WriteLine("OnScroll To Requested");
             base.OnScrollToRequested(e);
         }
+        public void UpdateLayout()
+        {
+            this.InvalidateMeasure();
+        }
 
         /// <summary>
         /// 
