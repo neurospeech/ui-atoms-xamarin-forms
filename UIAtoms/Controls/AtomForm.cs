@@ -531,9 +531,6 @@ namespace NeuroSpeech.UIAtoms.Controls
             this.ValidateCommand = new AtomCommand(OnValidateCommand);
 
             Content = listView = new AtomFormItemsControl(this);
-            // UpdateItems();
-
-            this.listView.VerticalScrollBarVisibility = ScrollBarVisibility.Always;
         }        
 
 
@@ -1062,15 +1059,54 @@ namespace NeuroSpeech.UIAtoms.Controls
     }
 
 
-#if N__IOS__
+#if __IOS__
 
-	public class AtomFormItemsControl: AtomItemsControl{
-		public AtomFormItemsControl ()
+	public class AtomFormItemsControl: StackLayout{
+        readonly AtomForm Form;
+        public AtomFormItemsControl (AtomForm form)
 		{
-			//this.HasUnevenRows = true;
+            this.Form = form;
+            this.Orientation = StackOrientation.Vertical;
 
-		}
-	}
+            var dt = new DataTemplate(() =>
+            {
+                // Grid grid = new Grid();
+                var afg = Form.FieldStyle.CreateContent() as AtomFieldGrid;
+                if (afg == null)
+                {
+                    throw new InvalidOperationException("FieldStyle must contain root element of type AtomFieldGrid");
+                }
+                afg.Form = this.Form;
+                return afg;
+            });
+
+            BindableLayout.SetItemTemplate(this, dt);
+
+            this.Spacing = 5;
+
+        }
+
+        public bool IsGrouped { get; set; }
+
+        System.Collections.IEnumerable itemsSource;
+        public System.Collections.IEnumerable ItemsSource
+        {
+            get
+            {
+                return itemsSource;
+            }
+            set
+            {
+                itemsSource = value;
+                BindableLayout.SetItemsSource(this, value);
+            }
+        }
+
+        public void UpdateLayout()
+        {
+            
+        }
+    }
 #else
 
     /// <summary>
@@ -1223,7 +1259,7 @@ namespace NeuroSpeech.UIAtoms.Controls
 
     }
     
-    #endif
+#endif
 
 
 
