@@ -1061,12 +1061,15 @@ namespace NeuroSpeech.UIAtoms.Controls
 
 #if __IOS__
 
-	public class AtomFormItemsControl: StackLayout{
+	public class AtomFormItemsControl: ScrollView {
         readonly AtomForm Form;
+        private StackLayout layout;
         public AtomFormItemsControl (AtomForm form)
 		{
             this.Form = form;
-            this.Orientation = StackOrientation.Vertical;
+            layout = new StackLayout();
+            this.Content = layout;
+            layout.Orientation = StackOrientation.Vertical;
 
             var dt = new DataTemplate(() =>
             {
@@ -1080,9 +1083,9 @@ namespace NeuroSpeech.UIAtoms.Controls
                 return afg;
             });
 
-            BindableLayout.SetItemTemplate(this, dt);
+            BindableLayout.SetItemTemplate(layout, dt);
 
-            this.Spacing = 5;
+            layout.Spacing = 5;
 
         }
 
@@ -1093,12 +1096,12 @@ namespace NeuroSpeech.UIAtoms.Controls
         {
             get
             {
-                return itemsSource;
+                return BindableLayout.GetItemsSource(layout);
             }
             set
             {
                 itemsSource = value;
-                BindableLayout.SetItemsSource(this, value);
+                BindableLayout.SetItemsSource(layout, value);
             }
         }
 
