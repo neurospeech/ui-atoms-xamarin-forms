@@ -775,12 +775,14 @@ namespace NeuroSpeech.UIAtoms.Controls
         /// </summary>
         /// <param name="view"></param>
         public void BindView(View view) {
+            this.Content = view;
+            if (view == null)
+                return;
             view.SetBinding(BindingContextProperty, new Binding
             {
                 Path = "BindingContext",
                 Source = this.Form
             }) ;
-            this.Content = view;
             view.PropertyChanged += View_PropertyChanged;
             Label = AtomForm.GetLabel(view);
             this.LabelColor = AtomForm.GetLabelColor(view);
