@@ -211,7 +211,7 @@ namespace NeuroSpeech.UIAtoms.Pages
                 using (BeginEdit())
                 {
 
-                    if (Chooser.Value == null)
+                    if (Chooser == null || Chooser.Value == null)
                     {
                         return;
                     }
