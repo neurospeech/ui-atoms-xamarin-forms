@@ -809,6 +809,10 @@ namespace NeuroSpeech.UIAtoms.Controls
 
         private void View_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            if (Content == null)
+            {
+                return;
+            }
             switch (e.PropertyName) {
                 case nameof(Label):
                     this.Label = AtomForm.GetLabel(Content);
